@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="meta.title">First Line AI — AI Workforce Automation for First-Line IT Operations</title>
+<meta name="description" data-i18n="meta.description" content="First Line AI integrates directly into your ITSM platform and autonomously handles high-volume first-line operations.">
+
+<!-- hreflang SEO tags -->
+<link rel="alternate" hreflang="en" href="https://firstlineai.com/">
+<link rel="alternate" hreflang="es" href="https://firstlineai.com/es/">
+<link rel="alternate" hreflang="fr" href="https://firstlineai.com/fr/">
+<link rel="alternate" hreflang="de" href="https://firstlineai.com/de/">
+<link rel="alternate" hreflang="nl" href="https://firstlineai.com/nl/">
+<link rel="alternate" hreflang="x-default" href="https://firstlineai.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #0B1220;
+    --navy-light: #111827;
+    --navy-mid: #0f1a2e;
+    --blue: #2563EB;
+    --blue-light: #3b82f6;
+    --cyan: #06B6D4;
+    --slate: #94A3B8;
+    --slate-light: #CBD5E1;
+    --white: #F8FAFC;
+    --pure-white: #ffffff;
+    --border: rgba(148,163,184,0.12);
+    --border-glow: rgba(6,182,212,0.2);
+    --glow-blue: rgba(37,99,235,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── LANGUAGE TRANSITION ── */
+  .lang-fade { opacity: 0; transition: opacity 0.18s ease; }
+  .lang-fade.visible { opacity: 1; }
+
+  /* ── TYPOGRAPHY ── */
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; font-weight: 700; }
+  h1 { font-size: clamp(2.4rem, 5vw, 4rem); letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); letter-spacing: -0.015em; }
+  h3 { font-size: 1.15rem; font-weight: 600; }
+  p { color: var(--slate); font-size: 1rem; }
+  .mono { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 6rem 0; position: relative; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(11,18,32,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-left { display: flex; align-items: center; gap: 2.5rem; }
+  .nav-logo {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem;
+    color: var(--pure-white); letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo-mark {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-mark svg { width: 14px; height: 14px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--slate); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--pure-white); }
+
+  /* ── LANGUAGE SWITCHER ── */
+  .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+  .lang-switcher {
+    display: flex; align-items: center; gap: 0;
+    border: 0.5px solid rgba(148,163,184,0.2);
+    border-radius: 6px; overflow: hidden;
+  }
+  .lang-btn {
+    background: transparent; border: none;
+    padding: 5px 9px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.1em;
+    color: var(--slate); cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+    border-right: 0.5px solid rgba(148,163,184,0.12);
+    text-transform: uppercase;
+  }
+  .lang-btn:last-child { border-right: none; }
+  .lang-btn:hover { color: var(--pure-white); background: rgba(37,99,235,0.12); }
+  .lang-btn.active { color: var(--cyan); background: rgba(6,182,212,0.08); }
+
+  .nav-cta {
+    padding: 0.55rem 1.25rem;
+    background: var(--blue); color: var(--pure-white);
+    border: none; border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.85rem 1.75rem;
+    background: var(--blue); color: var(--pure-white);
+    border: none; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,99,235,0.35); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.85rem 1.75rem;
+    background: transparent; color: var(--slate-light);
+    border: 0.5px solid rgba(148,163,184,0.3); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--cyan); color: var(--pure-white); transform: translateY(-2px); }
+  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* ── LABEL ── */
+  .label {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--cyan);
+    border: 0.5px solid rgba(6,182,212,0.3);
+    padding: 4px 12px; border-radius: 20px;
+    background: rgba(6,182,212,0.06);
+    margin-bottom: 1.5rem;
+  }
+  .text-cyan { color: var(--cyan); }
+  .text-white { color: var(--pure-white); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 6rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(37,99,235,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 30% 70%, rgba(6,182,212,0.06) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+    background-image: linear-gradient(var(--slate) 0.5px, transparent 0.5px), linear-gradient(90deg, var(--slate) 0.5px, transparent 0.5px);
+    background-size: 80px 80px;
+  }
+  .hero-inner { position: relative; max-width: 820px; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--cyan); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 0.5px; background: var(--cyan); }
+  .hero-h1 { color: var(--pure-white); margin-bottom: 1.75rem; }
+  .hero-h1 em { font-style: normal; color: var(--cyan); }
+  .hero-sub { font-size: 1.1rem; max-width: 600px; margin-bottom: 2.5rem; line-height: 1.8; }
+  .hero-meta { margin-top: 3.5rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .hero-stat { display: flex; flex-direction: column; }
+  .hero-stat-n { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--pure-white); }
+  .hero-stat-l { font-size: 0.75rem; color: var(--slate); }
+  .hero-divider { width: 0.5px; height: 36px; background: var(--border); }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--slate); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+  .scroll-dot { width: 20px; height: 32px; border: 0.5px solid rgba(148,163,184,0.3); border-radius: 10px; display: flex; align-items: flex-start; justify-content: center; padding-top: 6px; }
+  .scroll-dot::after { content: ''; width: 4px; height: 8px; background: var(--cyan); border-radius: 2px; animation: scrolldot 2s infinite ease-in-out; }
+  @keyframes scrolldot { 0%,100% { transform: translateY(0); opacity:1; } 60% { transform: translateY(8px); opacity:0.3; } }
+
+  /* ── PROBLEM ── */
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--border);
+    border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden;
+    margin-top: 3.5rem;
+  }
+  .problem-card { background: var(--navy-light); padding: 2rem; display: flex; flex-direction: column; gap: 0.75rem; transition: background 0.2s; }
+  .problem-card:hover { background: rgba(17,24,39,0.9); }
+  .problem-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(37,99,235,0.1); border: 0.5px solid rgba(37,99,235,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 0.25rem; }
+  .problem-icon svg { width: 16px; height: 16px; stroke: var(--blue-light); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .problem-card h3 { color: var(--pure-white); font-size: 0.95rem; }
+  .problem-card p { font-size: 0.875rem; }
+  .problem-statement { margin-top: 3rem; padding: 2rem 2.5rem; background: rgba(37,99,235,0.06); border: 0.5px solid rgba(37,99,235,0.2); border-radius: 10px; text-align: center; }
+  .problem-statement p { font-size: 1.05rem; color: var(--slate-light); font-style: italic; }
+
+  /* ── SOLUTION ── */
+  #solution { background: var(--navy-mid); }
+  .itsm-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem; margin-bottom: 3rem; }
+  .itsm-tag { font-family: 'DM Mono', monospace; font-size: 0.72rem; padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(6,182,212,0.25); color: var(--cyan); background: rgba(6,182,212,0.05); letter-spacing: 0.06em; }
+  .capabilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .cap-card { background: var(--navy); padding: 1.5rem 1.75rem; transition: background 0.2s; }
+  .cap-card:hover { background: rgba(11,18,32,0.6); }
+  .cap-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); margin-bottom: 0.75rem; box-shadow: 0 0 8px rgba(6,182,212,0.6); }
+  .cap-card h3 { color: var(--slate-light); font-size: 0.875rem; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+  .solution-statement { margin-top: 3rem; display: flex; align-items: center; gap: 1.5rem; padding: 1.75rem 2.25rem; background: rgba(6,182,212,0.04); border: 0.5px solid rgba(6,182,212,0.15); border-radius: 10px; }
+  .solution-statement-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(6,182,212,0.1); display: flex; align-items: center; justify-content: center; }
+  .solution-statement-icon svg { width: 18px; height: 18px; stroke: var(--cyan); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .solution-statement p { font-size: 0.9rem; color: var(--slate-light); }
+  .solution-statement strong { color: var(--pure-white); }
+
+  /* ── ROI ── */
+  #roi { background: var(--navy); }
+  .roi-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; border: 0.5px solid var(--border); margin-top: 3rem; margin-bottom: 2rem; }
+  .roi-col { padding: 2.5rem 2.25rem; background: var(--navy-light); }
+  .roi-col.ai { background: rgba(37,99,235,0.05); }
+  .roi-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 2rem; }
+  .badge { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+  .badge-traditional { background: rgba(148,163,184,0.1); color: var(--slate); border: 0.5px solid rgba(148,163,184,0.2); }
+  .badge-ai-plan { background: rgba(37,99,235,0.12); color: var(--blue-light); border: 0.5px solid rgba(37,99,235,0.25); }
+  .roi-col h3 { color: var(--pure-white); font-size: 1rem; }
+  .roi-line { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.85rem 0; border-bottom: 0.5px solid var(--border); }
+  .roi-line:last-of-type { border-bottom: none; }
+  .roi-line-label { font-size: 0.875rem; color: var(--slate); }
+  .roi-line-val { font-size: 0.875rem; color: var(--slate-light); text-align: right; max-width: 55%; }
+  .roi-line-val.bad { color: #f87171; }
+  .roi-line-val.good { color: #4ade80; }
+  .roi-total { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); }
+  .roi-total-label { font-size: 0.75rem; color: var(--slate); margin-bottom: 4px; }
+  .roi-total-val { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700; color: #f87171; }
+  .roi-total-val.highlight { color: var(--cyan); }
+  .roi-statement { padding: 1.5rem 2rem; background: rgba(6,182,212,0.04); border: 0.5px solid rgba(6,182,212,0.15); border-radius: 10px; text-align: center; }
+  .roi-statement p { font-size: 0.9rem; color: var(--slate-light); }
+
+  /* ── PRICING ── */
+  #pricing { background: var(--navy-mid); }
+  .pricing-intro { max-width: 560px; margin-bottom: 3.5rem; }
+  .plans-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 1px; }
+  .plan { background: var(--navy); padding: 2.25rem 2rem; display: flex; flex-direction: column; position: relative; }
+  .plan.featured { background: var(--navy-light); border-top: 2px solid var(--blue); }
+  .plan-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; display: inline-block; padding: 3px 10px; border-radius: 20px; }
+  .pl-pilot { color: #4ade80; background: rgba(74,222,128,0.08); border: 0.5px solid rgba(74,222,128,0.2); }
+  .pl-growth { color: var(--blue-light); background: rgba(59,130,246,0.08); border: 0.5px solid rgba(59,130,246,0.2); }
+  .pl-enterprise { color: var(--cyan); background: rgba(6,182,212,0.08); border: 0.5px solid rgba(6,182,212,0.2); }
+  .plan-name { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--pure-white); margin-bottom: 0.4rem; }
+  .plan-position { font-size: 0.8rem; color: var(--slate); margin-bottom: 1.5rem; line-height: 1.5; }
+  .plan-price-block { margin-bottom: 1.75rem; padding-bottom: 1.75rem; border-bottom: 0.5px solid var(--border); }
+  .plan-price { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--pure-white); line-height: 1; }
+  .plan-cycle { font-size: 0.8rem; color: var(--slate); margin-top: 5px; }
+  .plan-overage { font-size: 0.75rem; color: var(--slate); margin-top: 6px; font-family: 'DM Mono', monospace; }
+  .plan-features { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem; }
+  .plan-features li { font-size: 0.8rem; color: var(--slate); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .check-icon { flex-shrink: 0; width: 14px; height: 14px; margin-top: 1px; }
+  .plan-btn { display: block; text-align: center; padding: 0.75rem; border-radius: 7px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .plan-btn-outline { background: transparent; color: var(--slate-light); border: 0.5px solid rgba(148,163,184,0.25); }
+  .plan-btn-outline:hover { border-color: var(--cyan); color: var(--pure-white); }
+  .plan-btn-solid { background: var(--blue); color: var(--pure-white); }
+  .plan-btn-solid:hover { background: var(--blue-light); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
+  .popular-flag { position: absolute; top: -1px; right: 1.5rem; background: var(--blue); color: var(--pure-white); font-size: 0.68rem; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 0 0 6px 6px; }
+  .addons-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 3rem; }
+  .addon { background: var(--navy); padding: 1.75rem; }
+  .addon h3 { color: var(--pure-white); font-size: 0.95rem; margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+  .addon p { font-size: 0.82rem; margin-bottom: 1rem; }
+  .addon-price { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--slate-light); }
+
+  /* ── TALENT ── */
+  #talent { background: var(--navy); }
+  .talent-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+  .talent-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+  .talent-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: var(--slate-light); line-height: 1.6; }
+  .talent-list-icon { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: rgba(37,99,235,0.15); display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .talent-list-icon svg { width: 10px; height: 10px; stroke: var(--blue-light); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .talent-card { padding: 2.5rem; background: var(--navy-light); border: 0.5px solid var(--border); border-radius: 14px; }
+  .talent-card-metric { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border); }
+  .talent-card-metric:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .tcm-label { font-size: 0.75rem; color: var(--slate); margin-bottom: 4px; }
+  .tcm-val { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--pure-white); }
+  .tcm-sub { font-size: 0.75rem; color: var(--slate); margin-top: 2px; }
+
+  /* ── TRUST ── */
+  #trust { background: var(--navy-mid); }
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 3rem; }
+  .trust-card { background: var(--navy); padding: 2rem 1.75rem; }
+  .trust-card h3 { color: var(--slate-light); font-size: 0.9rem; margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+  .trust-card p { font-size: 0.82rem; }
+  .trust-icon { width: 32px; height: 32px; border-radius: 7px; background: rgba(37,99,235,0.08); border: 0.5px solid rgba(37,99,235,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+  .trust-icon svg { width: 15px; height: 15px; stroke: var(--blue-light); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ── FINAL CTA ── */
+  #cta-final { padding: 8rem 0; background: var(--navy); text-align: center; position: relative; overflow: hidden; }
+  .cta-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(37,99,235,0.1) 0%, transparent 70%); }
+  .cta-inner { position: relative; max-width: 680px; margin: 0 auto; }
+  .cta-inner h2 { color: var(--pure-white); margin-bottom: 1.25rem; }
+  .cta-inner > p { font-size: 1rem; margin-bottom: 2.5rem; }
+  .cta-note { margin-top: 1.5rem; font-size: 0.8rem; color: var(--slate); }
+
+  /* ── FOOTER ── */
+  footer { padding: 2.5rem 2rem; border-top: 0.5px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: var(--navy); }
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--slate); }
+  .footer-copy { font-size: 0.8rem; color: var(--slate); }
+  .footer-center { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { font-size: 0.8rem; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--slate-light); }
+  .footer-lang-note { font-size: 0.72rem; color: rgba(148,163,184,0.45); font-family: 'DM Mono', monospace; letter-spacing: 0.05em; }
+
+  /* ── SECTION HEADER ── */
+  .section-header { max-width: 680px; margin-bottom: 1rem; }
+  .section-header h2 { color: var(--pure-white); margin-bottom: 1rem; }
+  .section-header p { font-size: 1rem; line-height: 1.8; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeup { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeup 0.7s ease both; }
+  .fade-in-d1 { animation-delay: 0.1s; }
+  .fade-in-d2 { animation-delay: 0.2s; }
+  .fade-in-d3 { animation-delay: 0.35s; }
+  .fade-in-d4 { animation-delay: 0.5s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .plans-row, .addons-row { grid-template-columns: 1fr; }
+    .roi-compare { grid-template-columns: 1fr; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .capabilities-grid { grid-template-columns: 1fr 1fr; }
+    .trust-grid { grid-template-columns: 1fr 1fr; }
+    .talent-split { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 2rem; } h2 { font-size: 1.5rem; }
+    .capabilities-grid, .trust-grid { grid-template-columns: 1fr; }
+    .hero-meta { flex-direction: column; gap: 1rem; }
+    .hero-divider { display: none; }
+    .lang-btn { padding: 5px 6px; font-size: 0.6rem; }
+    .footer-center { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 4h10M2 7h6M2 10h8"/>
+        </svg>
+      </div>
+      First Line AI
+    </div>
+    <ul class="nav-links">
+      <li><a href="#problem" data-i18n="nav.problem">The Problem</a></li>
+      <li><a href="#solution" data-i18n="nav.platform">Platform</a></li>
+      <li><a href="#roi" data-i18n="nav.roi">ROI</a></li>
+      <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+      <li><a href="#trust" data-i18n="nav.security">Security</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switcher" role="navigation" aria-label="Language selector">
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" data-lang="nl" onclick="setLang('nl')">NL</button>
+    </div>
+    <a href="#cta-final" class="nav-cta" data-i18n="nav.cta">Book Demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <p class="hero-eyebrow fade-in" data-i18n="hero.eyebrow">AI Workforce Automation for First-Line IT Operations</p>
+      <h1 class="hero-h1 fade-in fade-in-d1" data-i18n="hero.h1">Replace Repetitive First-Line IT Work<br>with <em>AI Workforce Automation.</em></h1>
+      <p class="hero-sub fade-in fade-in-d2" data-i18n="hero.sub">First Line AI integrates directly into your ITSM platform and autonomously handles high-volume first-line operations — reducing workload, increasing speed, and delivering measurable ROI.</p>
+      <div class="btn-group fade-in fade-in-d3">
+        <a href="#cta-final" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="11" height="9" rx="1.5"/><path d="M2 5l5.5 4L13 5"/></svg>
+          <span data-i18n="hero.cta1">Request Executive Demo</span>
+        </a>
+        <a href="#pricing" class="btn-secondary">
+          <span data-i18n="hero.cta2">Start Pilot Program</span>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5h9M7 3l4 3.5L7 10"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta fade-in fade-in-d4">
+        <div class="hero-stat">
+          <span class="hero-stat-n">24/7</span>
+          <span class="hero-stat-l" data-i18n="hero.stat1">Operational capacity</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-n">8,000+</span>
+          <span class="hero-stat-l" data-i18n="hero.stat2">Tickets processed / month</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-n">60 <span data-i18n="hero.stat3unit">days</span></span>
+          <span class="hero-stat-l" data-i18n="hero.stat3">Pilot to production</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-dot"></div>
+    <span data-i18n="hero.scroll">Scroll</span>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-i18n="problem.label">The Challenge</div>
+      <h2 data-i18n="problem.h2">First-Line IT Operations Are Expensive to Scale.</h2>
+      <p data-i18n="problem.intro">IT departments face a structural tension: ticket volumes grow with the business, but staffing costs, skill gaps, and operational inconsistency make linear scaling unsustainable.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 16 16"><path d="M8 2v12M2 8h12"/><circle cx="8" cy="8" r="6"/></svg></div>
+        <h3 data-i18n="problem.c1h">Rising Personnel Costs</h3>
+        <p data-i18n="problem.c1p">Each first-line FTE carries a true annual cost of €70,000–€85,000+ when taxes, benefits, and overhead are accounted for.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 16 16"><path d="M3 12l3-4 2 2 3-5 3 7"/></svg></div>
+        <h3 data-i18n="problem.c2h">Increasing Ticket Volumes</h3>
+        <p data-i18n="problem.c2p">Digital operations generate exponentially more support demand. Manual teams cannot absorb this growth without proportional headcount increases.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg></div>
+        <h3 data-i18n="problem.c3h">Talent Shortages</h3>
+        <p data-i18n="problem.c3p">Qualified IT support professionals are increasingly difficult to recruit and retain, creating coverage gaps and SLA risk.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 16 16"><path d="M8 2l2 4h4l-3 2.5 1 4L8 10l-4 2.5 1-4L2 6h4z"/></svg></div>
+        <h3 data-i18n="problem.c4h">Training Overhead</h3>
+        <p data-i18n="problem.c4p">New hires require weeks of onboarding before reaching operational efficiency. Knowledge walks out the door every time someone leaves.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg></div>
+        <h3 data-i18n="problem.c5h">SLA Pressure</h3>
+        <p data-i18n="problem.c5p">Response time commitments become harder to sustain as volumes peak, shifts end, and attention degrades through repetitive manual work.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 16 16"><path d="M2 8h3l2-5 2 10 2-5h3"/></svg></div>
+        <h3 data-i18n="problem.c6h">Human Inconsistency</h3>
+        <p data-i18n="problem.c6p">Quality varies across shifts, agents, and fatigue levels. Inconsistent first-line handling increases escalation rates and user dissatisfaction.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg></div>
+        <h3 data-i18n="problem.c7h">Limited Operational Hours</h3>
+        <p data-i18n="problem.c7p">Human-only operations leave gaps in after-hours, weekend, and holiday coverage — increasing mean time to resolution for end users.</p>
+      </div>
+      <div class="problem-card" style="background: rgba(37,99,235,0.04);">
+        <div class="problem-icon" style="background: rgba(6,182,212,0.1); border-color: rgba(6,182,212,0.2);">
+          <svg viewBox="0 0 16 16" style="stroke: var(--cyan);"><path d="M2 14L8 2l6 12H2z"/></svg>
+        </div>
+        <h3 style="color: var(--cyan);" data-i18n="problem.c8h">The structural risk</h3>
+        <p data-i18n="problem.c8p">Without automation, IT cost structures become a drag on digital transformation — not an enabler of it.</p>
+      </div>
+    </div>
+    <div class="problem-statement">
+      <p data-i18n="problem.statement">Manual first-line operations do not scale with modern IT demand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-i18n="solution.label">The Platform</div>
+      <h2 data-i18n="solution.h2">Deploy an AI First Line Workforce.</h2>
+      <p data-i18n="solution.intro">First Line AI is operational infrastructure — not a conversational assistant. It integrates at the system level with your existing ITSM environment and processes tickets autonomously, at scale, with consistent quality and full auditability.</p>
+    </div>
+    <p class="mono" style="color: var(--slate); margin-bottom: 0.75rem;" data-i18n="solution.itsm_label">Native ITSM integrations</p>
+    <div class="itsm-list">
+      <span class="itsm-tag">TOPdesk</span><span class="itsm-tag">ServiceNow</span><span class="itsm-tag">Jira Service Management</span><span class="itsm-tag">Zendesk</span><span class="itsm-tag">Freshservice</span><span class="itsm-tag">ManageEngine</span><span class="itsm-tag">BMC Helix</span><span class="itsm-tag" data-i18n="solution.custom_itsm">Custom ITSM environments</span>
+    </div>
+    <p class="mono" style="color: var(--slate); margin-bottom: 1rem;" data-i18n="solution.cap_label">Automation capabilities</p>
+    <div class="capabilities-grid">
+      <div class="cap-card"><div class="cap-dot"></div><h3 data-i18n="solution.cap1">Ticket classification &amp; triage</h3></div>
+      <div class="cap-card"><div class="cap-dot"></div><h3 data-i18n="solution.cap2">Password resets &amp; account unlocks</h3></div>
+      <div class="cap-card"><div class="cap-dot"></div><h3 data-i18n="solution.cap3">Access provisioning</h3></div>
+      <div class="cap-card"><div class="cap-dot"></div><h3 data-i18n="solution.cap4">SLA monitoring &amp; enforcement</h3></div>
+      <div class="cap-card"><div class="cap-dot"></div><h3 data-i18n="solution.cap5">Knowledge-based responses</h3></div>
+      <div class="cap-card"><div class="cap-dot"></div><h3 data-i18n="solution.cap6">Conditional auto-resolution</h3></div>
+      <div class="cap-card"><div class="cap-dot"></div><h3 data-i18n="solution.cap7">Confidence-based routing</h3></div>
+      <div class="cap-card"><div class="cap-dot"></div><h3 data-i18n="solution.cap8">Escalation to human engineers</h3></div>
+      <div class="cap-card"><div class="cap-dot"></div><h3 data-i18n="solution.cap9">Automation workflow orchestration</h3></div>
+    </div>
+    <div class="solution-statement">
+      <div class="solution-statement-icon"><svg viewBox="0 0 18 18"><path d="M9 2l2 5h5l-4 3 1.5 5L9 12l-4.5 3 1.5-5-4-3h5z"/></svg></div>
+      <p data-i18n="solution.statement">This is <strong>operational infrastructure</strong>, not a chatbot. One AI Workforce unit processes thousands of tickets per month with consistent, auditable quality — and zero fatigue.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section id="roi">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-i18n="roi.label">Return on Investment</div>
+      <h2 data-i18n="roi.h2">Built for Measurable Operational ROI.</h2>
+      <p data-i18n="roi.intro">IT leadership needs to justify automation investment with hard numbers. First Line AI is designed from the ground up to produce a clear, defensible ROI — starting at the 60-day pilot.</p>
+    </div>
+    <div class="roi-compare">
+      <div class="roi-col">
+        <div class="roi-col-head"><span class="badge badge-traditional" data-i18n="roi.trad_badge">Traditional model</span></div>
+        <h3 style="color: var(--pure-white); margin-bottom: 1.5rem;" data-i18n="roi.trad_title">First-line IT employee</h3>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.t1l">Base salary</span><span class="roi-line-val bad">€45,000 – €65,000</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.t2l">Employer taxes &amp; pension</span><span class="roi-line-val bad" data-i18n="roi.t2v">+16–22% overhead</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.t3l">Sick leave &amp; vacation</span><span class="roi-line-val bad" data-i18n="roi.t3v">~25 days / year</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.t4l">Workspace &amp; hardware</span><span class="roi-line-val bad" data-i18n="roi.t4v">€3,000 – €6,000 / year</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.t5l">Training &amp; management</span><span class="roi-line-val bad" data-i18n="roi.t5v">€2,000 – €5,000 / year</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.t6l">Operational hours</span><span class="roi-line-val" style="color:var(--slate);" data-i18n="roi.t6v">~1,760 hrs / year</span></div>
+        <div class="roi-total">
+          <p class="roi-total-label" data-i18n="roi.trad_total_label">True annual cost per FTE</p>
+          <p class="roi-total-val">€70,000 – €85,000+</p>
+        </div>
+      </div>
+      <div class="roi-col ai">
+        <div class="roi-col-head"><span class="badge badge-ai-plan">First Line AI</span></div>
+        <h3 style="color: var(--pure-white); margin-bottom: 1.5rem;" data-i18n="roi.ai_title">AI Workforce unit</h3>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.a1l">Subscription model</span><span class="roi-line-val good" data-i18n="roi.a1v">Predictable &amp; fixed</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.a2l">Scales instantly</span><span class="roi-line-val good" data-i18n="roi.a2v">No hiring cycles</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.a3l">Sick leave &amp; vacation</span><span class="roi-line-val good" data-i18n="roi.a3v">None</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.a4l">Workspace &amp; hardware</span><span class="roi-line-val good" data-i18n="roi.a4v">None</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.a5l">Onboarding &amp; training</span><span class="roi-line-val good" data-i18n="roi.a5v">None</span></div>
+        <div class="roi-line"><span class="roi-line-label" data-i18n="roi.a6l">Operational hours</span><span class="roi-line-val good" data-i18n="roi.a6v">8,760 hrs / year — 24/7</span></div>
+        <div class="roi-total">
+          <p class="roi-total-label" data-i18n="roi.ai_total_label">Starting at</p>
+          <p class="roi-total-val highlight">€2,750 / month</p>
+        </div>
+      </div>
+    </div>
+    <div class="roi-statement">
+      <p data-i18n="roi.statement">Automation that strengthens your IT workforce — not replaces strategic talent. First Line AI handles the volume, your engineers drive the value.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="label" data-i18n="pricing.label">Pricing</div>
+    <div class="pricing-intro">
+      <h2 style="color: var(--pure-white); margin-bottom: 1rem;" data-i18n="pricing.h2">Enterprise Pricing for AI Workforce Automation.</h2>
+      <p data-i18n="pricing.intro">Choose the deployment model that matches your automation maturity and ticket volume. All plans include integration support, an analytics dashboard, and a structured onboarding process.</p>
+    </div>
+    <div class="plans-row">
+      <div class="plan">
+        <span class="plan-label pl-pilot" data-i18n="pricing.pilot_label">Pilot — Limited availability</span>
+        <p class="plan-name" data-i18n="pricing.pilot_name">Pilot Program</p>
+        <p class="plan-position" data-i18n="pricing.pilot_pos">Low-risk validation for innovation-driven IT teams. Prove ROI before committing at scale.</p>
+        <div class="plan-price-block">
+          <p class="plan-price">€3,500</p>
+          <p class="plan-cycle" data-i18n="pricing.pilot_cycle">one-time — 60-day pilot</p>
+        </div>
+        <ul class="plan-features">
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#4ade80" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#4ade80" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pilot_f1">1 ITSM integration — TOPdesk or ServiceNow</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#4ade80" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#4ade80" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pilot_f2">Up to 2,000 tickets processed</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#4ade80" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#4ade80" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pilot_f3">Human-in-the-loop mode</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#4ade80" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#4ade80" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pilot_f4">10 predefined automation use cases</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#4ade80" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#4ade80" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pilot_f5">Basic analytics dashboard</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#4ade80" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#4ade80" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pilot_f6">Dedicated onboarding support</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#4ade80" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#4ade80" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pilot_f7">ROI impact report at 60-day close</span></li>
+        </ul>
+        <a href="#cta-final" class="plan-btn plan-btn-outline" data-i18n="pricing.pilot_cta">Start pilot program</a>
+      </div>
+      <div class="plan featured">
+        <div class="popular-flag" data-i18n="pricing.popular">Most popular</div>
+        <span class="plan-label pl-growth" data-i18n="pricing.growth_label">Growth</span>
+        <p class="plan-name" data-i18n="pricing.growth_name">Growth Plan</p>
+        <p class="plan-position" data-i18n="pricing.growth_pos">Designed for mid-sized IT departments scaling automation across everyday ticket operations.</p>
+        <div class="plan-price-block">
+          <p class="plan-price">€2,750</p>
+          <p class="plan-cycle" data-i18n="pricing.growth_cycle">per month, billed annually</p>
+          <p class="plan-overage" data-i18n="pricing.growth_overage">+ €0.60 / ticket above 3,000 / mo</p>
+        </div>
+        <ul class="plan-features">
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#3b82f6" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#3b82f6" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.growth_f1">Up to 3,000 tickets per month</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#3b82f6" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#3b82f6" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.growth_f2">AI draft and conditional auto-resolve</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#3b82f6" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#3b82f6" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.growth_f3">1 ITSM integration</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#3b82f6" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#3b82f6" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.growth_f4">Confidence-based routing engine</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#3b82f6" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#3b82f6" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.growth_f5">SLA and performance dashboard</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#3b82f6" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#3b82f6" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.growth_f6">Email and priority support</span></li>
+        </ul>
+        <a href="#cta-final" class="plan-btn plan-btn-solid" data-i18n="pricing.growth_cta">Get started</a>
+      </div>
+      <div class="plan">
+        <span class="plan-label pl-enterprise" data-i18n="pricing.ent_label">Enterprise</span>
+        <p class="plan-name" data-i18n="pricing.ent_name">Enterprise Plan</p>
+        <p class="plan-position" data-i18n="pricing.ent_pos">Full-scale AI workforce automation for large IT organisations with advanced compliance and deployment requirements.</p>
+        <div class="plan-price-block">
+          <p class="plan-price">€5,500</p>
+          <p class="plan-cycle" data-i18n="pricing.ent_cycle">per month, billed annually</p>
+          <p class="plan-overage" data-i18n="pricing.ent_overage">+ €0.45 / ticket above 8,000 / mo</p>
+        </div>
+        <ul class="plan-features">
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#06B6D4" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#06B6D4" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.ent_f1">Up to 8,000 tickets per month</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#06B6D4" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#06B6D4" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.ent_f2">Multi-department deployment</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#06B6D4" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#06B6D4" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.ent_f3">Advanced confidence and risk-based routing</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#06B6D4" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#06B6D4" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.ent_f4">Private deployment option available</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#06B6D4" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#06B6D4" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.ent_f5">Security and compliance review package</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#06B6D4" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#06B6D4" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.ent_f6">Dedicated onboarding and implementation</span></li>
+          <li><svg class="check-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="#06B6D4" stroke-width="0.75"/><path d="M4 7.2l2 2L10 5" stroke="#06B6D4" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.ent_f7">Priority enterprise support</span></li>
+        </ul>
+        <a href="#cta-final" class="plan-btn plan-btn-outline" data-i18n="pricing.ent_cta">Contact sales</a>
+      </div>
+    </div>
+    <div style="margin-top: 3.5rem;">
+      <p class="label" style="margin-bottom: 0.5rem;" data-i18n="pricing.addons_label">Add-ons</p>
+      <p style="font-size: 0.875rem; color: var(--slate); margin-bottom: 1.75rem;" data-i18n="pricing.addons_sub">Advanced operational extensions for mature IT environments. Available on any plan.</p>
+      <div class="addons-row">
+        <div class="addon">
+          <h3 data-i18n="pricing.addon1_name">Auto-Resolve Unlock</h3>
+          <p data-i18n="pricing.addon1_desc">Enable fully autonomous ticket resolution for high-confidence, low-risk categories — no human review required per ticket.</p>
+          <p class="addon-price">€1,000 / <span data-i18n="pricing.per_month">month</span></p>
+        </div>
+        <div class="addon">
+          <h3 data-i18n="pricing.addon2_name">HR Automation Module</h3>
+          <p data-i18n="pricing.addon2_desc">Extend AI workforce automation to HR operations via AFAS or Visma integration — onboarding, offboarding, and access changes handled automatically.</p>
+          <p class="addon-price">€750 / <span data-i18n="pricing.per_month">month</span></p>
+        </div>
+        <div class="addon">
+          <h3 data-i18n="pricing.addon3_name">Private AI Model Routing</h3>
+          <p data-i18n="pricing.addon3_desc">Route all AI inference through your own Azure environment or on-premises infrastructure. Full data sovereignty with zero external exposure.</p>
+          <p class="addon-price">€1,500 / <span data-i18n="pricing.per_month">month</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TALENT -->
+<section id="talent">
+  <div class="container">
+    <div class="label" data-i18n="talent.label">Workforce Augmentation</div>
+    <div class="talent-split">
+      <div>
+        <h2 style="color: var(--pure-white); margin-bottom: 1rem;" data-i18n="talent.h2">Elevate Your IT Team.</h2>
+        <p style="margin-bottom: 1.5rem;" data-i18n="talent.p1">AI Workforce Automation is not a reduction strategy. It is a reallocation strategy. When First Line AI absorbs the repetitive digital workload, your engineers reclaim time for work that actually requires human expertise.</p>
+        <p style="margin-bottom: 2rem;" data-i18n="talent.p2">Your team focuses on what matters:</p>
+        <ul class="talent-list">
+          <li><div class="talent-list-icon"><svg viewBox="0 0 10 10"><path d="M2 5l2 2 4-4"/></svg></div><span data-i18n="talent.li1">Complex incident investigation and root cause analysis</span></li>
+          <li><div class="talent-list-icon"><svg viewBox="0 0 10 10"><path d="M2 5l2 2 4-4"/></svg></div><span data-i18n="talent.li2">Infrastructure design and continuous improvement</span></li>
+          <li><div class="talent-list-icon"><svg viewBox="0 0 10 10"><path d="M2 5l2 2 4-4"/></svg></div><span data-i18n="talent.li3">Security initiatives and risk management</span></li>
+          <li><div class="talent-list-icon"><svg viewBox="0 0 10 10"><path d="M2 5l2 2 4-4"/></svg></div><span data-i18n="talent.li4">Strategic innovation and digital transformation</span></li>
+          <li><div class="talent-list-icon"><svg viewBox="0 0 10 10"><path d="M2 5l2 2 4-4"/></svg></div><span data-i18n="talent.li5">On-site operations requiring physical presence</span></li>
+        </ul>
+      </div>
+      <div class="talent-card">
+        <div class="talent-card-metric">
+          <p class="tcm-label" data-i18n="talent.m1l">Tickets handled autonomously</p>
+          <p class="tcm-val">8,000 <span style="font-size: 1rem; color: var(--slate);">/ <span data-i18n="pricing.per_month">month</span></span></p>
+          <p class="tcm-sub" data-i18n="talent.m1s">Per AI workforce unit, with confidence-based routing</p>
+        </div>
+        <div class="talent-card-metric">
+          <p class="tcm-label" data-i18n="talent.m2l">Operational availability</p>
+          <p class="tcm-val">24/7/365</p>
+          <p class="tcm-sub" data-i18n="talent.m2s">No shift coverage, no leave planning required</p>
+        </div>
+        <div class="talent-card-metric">
+          <p class="tcm-label" data-i18n="talent.m3l">Time to production</p>
+          <p class="tcm-val">60 <span data-i18n="hero.stat3unit">days</span></p>
+          <p class="tcm-sub" data-i18n="talent.m3s">From pilot sign-off to live operational deployment</p>
+        </div>
+        <div class="talent-card-metric" style="border:none;margin:0;padding:0;">
+          <p class="tcm-label" data-i18n="talent.m4l">Audit and oversight</p>
+          <p class="tcm-val" style="font-size:1rem;color:var(--cyan);" data-i18n="talent.m4v">Full visibility retained</p>
+          <p class="tcm-sub" data-i18n="talent.m4s">Every action logged, routed, and reviewable by your team</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-i18n="trust.label">Security &amp; Compliance</div>
+      <h2 data-i18n="trust.h2">Enterprise-Grade Infrastructure. By Design.</h2>
+      <p data-i18n="trust.intro">First Line AI is built to operate inside enterprise security boundaries — not around them. Every deployment meets the governance, privacy, and compliance requirements expected by large-scale IT organisations.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon"><svg viewBox="0 0 15 15"><path d="M7.5 2L3 4v4.5c0 2.7 2 5 4.5 5.5C10 13.5 12 11.2 12 8.5V4L7.5 2z"/></svg></div>
+        <h3 data-i18n="trust.c1h">GDPR Compliance</h3>
+        <p data-i18n="trust.c1p">All data processing is conducted within compliant boundaries. Personal data handling adheres to EU privacy regulations with full documentation.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><svg viewBox="0 0 15 15"><circle cx="7.5" cy="5" r="3"/><path d="M2 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/></svg></div>
+        <h3 data-i18n="trust.c2h">Role-Based Access Control</h3>
+        <p data-i18n="trust.c2p">Granular access control ensures that every team member and system integration operates within defined permission boundaries.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><svg viewBox="0 0 15 15"><rect x="3" y="7" width="9" height="6" rx="1.5"/><path d="M5 7V5a2.5 2.5 0 015 0v2"/></svg></div>
+        <h3 data-i18n="trust.c3h">Encrypted Data Processing</h3>
+        <p data-i18n="trust.c3p">All data at rest and in transit is encrypted. No ticket content is stored beyond operational necessity or retained across environments.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><svg viewBox="0 0 15 15"><rect x="2" y="2" width="11" height="11" rx="2"/><path d="M6 7h3M7.5 5.5v3"/></svg></div>
+        <h3 data-i18n="trust.c4h">Private Deployment Options</h3>
+        <p data-i18n="trust.c4p">For organisations requiring data isolation, First Line AI can be deployed within your own Azure tenant or on-premises infrastructure.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><svg viewBox="0 0 15 15"><path d="M3 5l4 4 5-7"/><path d="M3 12h9"/></svg></div>
+        <h3 data-i18n="trust.c5h">Audit Logs &amp; Governance</h3>
+        <p data-i18n="trust.c5p">Every automated action is logged with a full audit trail — supporting internal governance, external audits, and compliance reviews.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><svg viewBox="0 0 15 15"><path d="M7.5 2v11M2 7.5h11"/><circle cx="7.5" cy="7.5" r="5.5"/></svg></div>
+        <h3 data-i18n="trust.c6h">Azure &amp; On-Premise Ready</h3>
+        <p data-i18n="trust.c6p">Deployment is flexible across cloud, hybrid, and on-premises environments — with no dependency on shared third-party infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta-final">
+  <div class="cta-bg"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <div class="label" style="margin:0 auto 1.5rem;display:block;text-align:center;width:fit-content;" data-i18n="cta.label">Ready to deploy</div>
+      <h2 data-i18n="cta.h2">Your First Line Should Be Intelligent Infrastructure.</h2>
+      <p data-i18n="cta.sub">Modern IT departments automate what does not require human judgment. First Line AI gives your organisation the operational capacity to handle volume at scale — while your engineers focus on the work that matters.</p>
+      <div class="btn-group" style="justify-content:center;">
+        <a href="mailto:hello@firstlineai.com" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="11" height="9" rx="1.5"/><path d="M2 5l5.5 4L13 5"/></svg>
+          <span data-i18n="cta.cta1">Book Executive Strategy Call</span>
+        </a>
+        <a href="#pricing" class="btn-secondary">
+          <span data-i18n="cta.cta2">Start 60-Day Pilot</span>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5h9M7 3l4 3.5L7 10"/></svg>
+        </a>
+      </div>
+      <p class="cta-note" data-i18n="cta.note">All pilots include a mutual NDA. Enterprise pricing available for volumes above 8,000 tickets per month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">First Line AI</span>
+  <div class="footer-center">
+    <div class="footer-links">
+      <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+      <a href="#" data-i18n="footer.terms">Terms of Service</a>
+      <a href="#" data-i18n="footer.security">Security</a>
+      <a href="mailto:hello@firstlineai.com" data-i18n="footer.contact">Contact</a>
+    </div>
+    <span class="footer-lang-note" data-i18n="footer.lang_note">Available in English, Spanish, French, German and Dutch.</span>
+  </div>
+  <span class="footer-copy" data-i18n="footer.copy">&copy; 2025 First Line AI. All rights reserved.</span>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────
+// TRANSLATION DATA
+// ─────────────────────────────────────────────
+const translations = {
+
+en: {
+  "meta.title": "First Line AI — AI Workforce Automation for First-Line IT Operations",
+  "meta.description": "First Line AI integrates directly into your ITSM platform and autonomously handles high-volume first-line operations — reducing workload, increasing speed, and delivering measurable ROI.",
+  "nav.problem": "The Problem", "nav.platform": "Platform", "nav.roi": "ROI", "nav.pricing": "Pricing", "nav.security": "Security", "nav.cta": "Book Demo",
+  "hero.eyebrow": "AI Workforce Automation for First-Line IT Operations",
+  "hero.h1": 'Replace Repetitive First-Line IT Work<br>with <em>AI Workforce Automation.</em>',
+  "hero.sub": "First Line AI integrates directly into your ITSM platform and autonomously handles high-volume first-line operations — reducing workload, increasing speed, and delivering measurable ROI.",
+  "hero.cta1": "Request Executive Demo", "hero.cta2": "Start Pilot Program",
+  "hero.stat1": "Operational capacity", "hero.stat2": "Tickets processed / month", "hero.stat3unit": "days", "hero.stat3": "Pilot to production", "hero.scroll": "Scroll",
+  "problem.label": "The Challenge",
+  "problem.h2": "First-Line IT Operations Are Expensive to Scale.",
+  "problem.intro": "IT departments face a structural tension: ticket volumes grow with the business, but staffing costs, skill gaps, and operational inconsistency make linear scaling unsustainable.",
+  "problem.c1h": "Rising Personnel Costs", "problem.c1p": "Each first-line FTE carries a true annual cost of €70,000–€85,000+ when taxes, benefits, and overhead are accounted for.",
+  "problem.c2h": "Increasing Ticket Volumes", "problem.c2p": "Digital operations generate exponentially more support demand. Manual teams cannot absorb this growth without proportional headcount increases.",
+  "problem.c3h": "Talent Shortages", "problem.c3p": "Qualified IT support professionals are increasingly difficult to recruit and retain, creating coverage gaps and SLA risk.",
+  "problem.c4h": "Training Overhead", "problem.c4p": "New hires require weeks of onboarding before reaching operational efficiency. Knowledge walks out the door every time someone leaves.",
+  "problem.c5h": "SLA Pressure", "problem.c5p": "Response time commitments become harder to sustain as volumes peak, shifts end, and attention degrades through repetitive manual work.",
+  "problem.c6h": "Human Inconsistency", "problem.c6p": "Quality varies across shifts, agents, and fatigue levels. Inconsistent first-line handling increases escalation rates and user dissatisfaction.",
+  "problem.c7h": "Limited Operational Hours", "problem.c7p": "Human-only operations leave gaps in after-hours, weekend, and holiday coverage — increasing mean time to resolution for end users.",
+  "problem.c8h": "The structural risk", "problem.c8p": "Without automation, IT cost structures become a drag on digital transformation — not an enabler of it.",
+  "problem.statement": "Manual first-line operations do not scale with modern IT demand.",
+  "solution.label": "The Platform", "solution.h2": "Deploy an AI First Line Workforce.",
+  "solution.intro": "First Line AI is operational infrastructure — not a conversational assistant. It integrates at the system level with your existing ITSM environment and processes tickets autonomously, at scale, with consistent quality and full auditability.",
+  "solution.itsm_label": "Native ITSM integrations", "solution.cap_label": "Automation capabilities", "solution.custom_itsm": "Custom ITSM environments",
+  "solution.cap1": "Ticket classification & triage", "solution.cap2": "Password resets & account unlocks", "solution.cap3": "Access provisioning",
+  "solution.cap4": "SLA monitoring & enforcement", "solution.cap5": "Knowledge-based responses", "solution.cap6": "Conditional auto-resolution",
+  "solution.cap7": "Confidence-based routing", "solution.cap8": "Escalation to human engineers", "solution.cap9": "Automation workflow orchestration",
+  "solution.statement": "This is <strong>operational infrastructure</strong>, not a chatbot. One AI Workforce unit processes thousands of tickets per month with consistent, auditable quality — and zero fatigue.",
+  "roi.label": "Return on Investment", "roi.h2": "Built for Measurable Operational ROI.",
+  "roi.intro": "IT leadership needs to justify automation investment with hard numbers. First Line AI is designed from the ground up to produce a clear, defensible ROI — starting at the 60-day pilot.",
+  "roi.trad_badge": "Traditional model", "roi.trad_title": "First-line IT employee",
+  "roi.t1l": "Base salary", "roi.t2l": "Employer taxes & pension", "roi.t2v": "+16–22% overhead", "roi.t3l": "Sick leave & vacation", "roi.t3v": "~25 days / year",
+  "roi.t4l": "Workspace & hardware", "roi.t4v": "€3,000 – €6,000 / year", "roi.t5l": "Training & management", "roi.t5v": "€2,000 – €5,000 / year",
+  "roi.t6l": "Operational hours", "roi.t6v": "~1,760 hrs / year", "roi.trad_total_label": "True annual cost per FTE",
+  "roi.ai_title": "AI Workforce unit", "roi.a1l": "Subscription model", "roi.a1v": "Predictable & fixed", "roi.a2l": "Scales instantly", "roi.a2v": "No hiring cycles",
+  "roi.a3l": "Sick leave & vacation", "roi.a3v": "None", "roi.a4l": "Workspace & hardware", "roi.a4v": "None",
+  "roi.a5l": "Onboarding & training", "roi.a5v": "None", "roi.a6l": "Operational hours", "roi.a6v": "8,760 hrs / year — 24/7", "roi.ai_total_label": "Starting at",
+  "roi.statement": "Automation that strengthens your IT workforce — not replaces strategic talent. First Line AI handles the volume, your engineers drive the value.",
+  "pricing.label": "Pricing", "pricing.h2": "Enterprise Pricing for AI Workforce Automation.",
+  "pricing.intro": "Choose the deployment model that matches your automation maturity and ticket volume. All plans include integration support, an analytics dashboard, and a structured onboarding process.",
+  "pricing.pilot_label": "Pilot — Limited availability", "pricing.pilot_name": "Pilot Program",
+  "pricing.pilot_pos": "Low-risk validation for innovation-driven IT teams. Prove ROI before committing at scale.",
+  "pricing.pilot_cycle": "one-time — 60-day pilot", "pricing.pilot_f1": "1 ITSM integration — TOPdesk or ServiceNow",
+  "pricing.pilot_f2": "Up to 2,000 tickets processed", "pricing.pilot_f3": "Human-in-the-loop mode",
+  "pricing.pilot_f4": "10 predefined automation use cases", "pricing.pilot_f5": "Basic analytics dashboard",
+  "pricing.pilot_f6": "Dedicated onboarding support", "pricing.pilot_f7": "ROI impact report at 60-day close",
+  "pricing.pilot_cta": "Start pilot program", "pricing.popular": "Most popular",
+  "pricing.growth_label": "Growth", "pricing.growth_name": "Growth Plan",
+  "pricing.growth_pos": "Designed for mid-sized IT departments scaling automation across everyday ticket operations.",
+  "pricing.growth_cycle": "per month, billed annually", "pricing.growth_overage": "+ €0.60 / ticket above 3,000 / mo",
+  "pricing.growth_f1": "Up to 3,000 tickets per month", "pricing.growth_f2": "AI draft and conditional auto-resolve",
+  "pricing.growth_f3": "1 ITSM integration", "pricing.growth_f4": "Confidence-based routing engine",
+  "pricing.growth_f5": "SLA and performance dashboard", "pricing.growth_f6": "Email and priority support",
+  "pricing.growth_cta": "Get started",
+  "pricing.ent_label": "Enterprise", "pricing.ent_name": "Enterprise Plan",
+  "pricing.ent_pos": "Full-scale AI workforce automation for large IT organisations with advanced compliance and deployment requirements.",
+  "pricing.ent_cycle": "per month, billed annually", "pricing.ent_overage": "+ €0.45 / ticket above 8,000 / mo",
+  "pricing.ent_f1": "Up to 8,000 tickets per month", "pricing.ent_f2": "Multi-department deployment",
+  "pricing.ent_f3": "Advanced confidence and risk-based routing", "pricing.ent_f4": "Private deployment option available",
+  "pricing.ent_f5": "Security and compliance review package", "pricing.ent_f6": "Dedicated onboarding and implementation",
+  "pricing.ent_f7": "Priority enterprise support", "pricing.ent_cta": "Contact sales",
+  "pricing.addons_label": "Add-ons", "pricing.addons_sub": "Advanced operational extensions for mature IT environments. Available on any plan.",
+  "pricing.addon1_name": "Auto-Resolve Unlock", "pricing.addon1_desc": "Enable fully autonomous ticket resolution for high-confidence, low-risk categories — no human review required per ticket.",
+  "pricing.addon2_name": "HR Automation Module", "pricing.addon2_desc": "Extend AI workforce automation to HR operations via AFAS or Visma — onboarding, offboarding, and access changes handled automatically.",
+  "pricing.addon3_name": "Private AI Model Routing", "pricing.addon3_desc": "Route all AI inference through your own Azure environment or on-premises infrastructure. Full data sovereignty with zero external exposure.",
+  "pricing.per_month": "month",
+  "talent.label": "Workforce Augmentation", "talent.h2": "Elevate Your IT Team.",
+  "talent.p1": "AI Workforce Automation is not a reduction strategy. It is a reallocation strategy. When First Line AI absorbs the repetitive digital workload, your engineers reclaim time for work that actually requires human expertise.",
+  "talent.p2": "Your team focuses on what matters:",
+  "talent.li1": "Complex incident investigation and root cause analysis", "talent.li2": "Infrastructure design and continuous improvement",
+  "talent.li3": "Security initiatives and risk management", "talent.li4": "Strategic innovation and digital transformation",
+  "talent.li5": "On-site operations requiring physical presence",
+  "talent.m1l": "Tickets handled autonomously", "talent.m1s": "Per AI workforce unit, with confidence-based routing",
+  "talent.m2l": "Operational availability", "talent.m2s": "No shift coverage, no leave planning required",
+  "talent.m3l": "Time to production", "talent.m3s": "From pilot sign-off to live operational deployment",
+  "talent.m4l": "Audit and oversight", "talent.m4v": "Full visibility retained", "talent.m4s": "Every action logged, routed, and reviewable by your team",
+  "trust.label": "Security & Compliance", "trust.h2": "Enterprise-Grade Infrastructure. By Design.",
+  "trust.intro": "First Line AI is built to operate inside enterprise security boundaries — not around them. Every deployment meets the governance, privacy, and compliance requirements expected by large-scale IT organisations.",
+  "trust.c1h": "GDPR Compliance", "trust.c1p": "All data processing is conducted within compliant boundaries. Personal data handling adheres to EU privacy regulations with full documentation.",
+  "trust.c2h": "Role-Based Access Control", "trust.c2p": "Granular access control ensures that every team member and system integration operates within defined permission boundaries.",
+  "trust.c3h": "Encrypted Data Processing", "trust.c3p": "All data at rest and in transit is encrypted. No ticket content is stored beyond operational necessity or retained across environments.",
+  "trust.c4h": "Private Deployment Options", "trust.c4p": "For organisations requiring data isolation, First Line AI can be deployed within your own Azure tenant or on-premises infrastructure.",
+  "trust.c5h": "Audit Logs & Governance", "trust.c5p": "Every automated action is logged with a full audit trail — supporting internal governance, external audits, and compliance reviews.",
+  "trust.c6h": "Azure & On-Premise Ready", "trust.c6p": "Deployment is flexible across cloud, hybrid, and on-premises environments — with no dependency on shared third-party infrastructure.",
+  "cta.label": "Ready to deploy", "cta.h2": "Your First Line Should Be Intelligent Infrastructure.",
+  "cta.sub": "Modern IT departments automate what does not require human judgment. First Line AI gives your organisation the operational capacity to handle volume at scale — while your engineers focus on the work that matters.",
+  "cta.cta1": "Book Executive Strategy Call", "cta.cta2": "Start 60-Day Pilot",
+  "cta.note": "All pilots include a mutual NDA. Enterprise pricing available for volumes above 8,000 tickets per month.",
+  "footer.privacy": "Privacy Policy", "footer.terms": "Terms of Service", "footer.security": "Security", "footer.contact": "Contact",
+  "footer.lang_note": "Available in English, Spanish, French, German and Dutch.",
+  "footer.copy": "© 2025 First Line AI. All rights reserved."
+},
+
+es: {
+  "meta.title": "First Line AI — Automatización de Fuerza Laboral IA para Operaciones IT de Primera Línea",
+  "meta.description": "First Line AI se integra directamente en su plataforma ITSM y gestiona de forma autónoma las operaciones de primera línea de alto volumen.",
+  "nav.problem": "El Problema", "nav.platform": "Plataforma", "nav.roi": "ROI", "nav.pricing": "Precios", "nav.security": "Seguridad", "nav.cta": "Solicitar Demo",
+  "hero.eyebrow": "Automatización de Fuerza Laboral IA para Operaciones IT de Primera Línea",
+  "hero.h1": 'Escale sus Operaciones IT de Primera Línea<br>con <em>Automatización de Fuerza Laboral IA.</em>',
+  "hero.sub": "First Line AI se integra directamente en su plataforma ITSM y gestiona de forma autónoma las operaciones de alta demanda — reduciendo la carga de trabajo, acelerando la respuesta y generando un ROI medible y sostenible.",
+  "hero.cta1": "Solicitar Demo Ejecutivo", "hero.cta2": "Iniciar Programa Piloto",
+  "hero.stat1": "Capacidad operacional", "hero.stat2": "Tickets procesados / mes", "hero.stat3unit": "días", "hero.stat3": "De piloto a producción", "hero.scroll": "Desplazar",
+  "problem.label": "El Desafío",
+  "problem.h2": "Las Operaciones IT de Primera Línea Son Difíciles de Escalar.",
+  "problem.intro": "Los departamentos de IT enfrentan una tensión estructural: los volúmenes de tickets crecen junto con el negocio, pero los costes de personal, la escasez de talento y la inconsistencia operativa hacen insostenible un escalado lineal.",
+  "problem.c1h": "Costes de Personal Crecientes", "problem.c1p": "Cada FTE de primera línea supone un coste anual real de €70.000–€85.000+ considerando impuestos, beneficios y gastos generales.",
+  "problem.c2h": "Volúmenes de Tickets en Aumento", "problem.c2p": "Las operaciones digitales generan una demanda de soporte exponencialmente mayor. Los equipos manuales no pueden absorber este crecimiento sin incrementar proporcionalmente la plantilla.",
+  "problem.c3h": "Escasez de Talento", "problem.c3p": "Los profesionales cualificados de soporte IT son cada vez más difíciles de contratar y retener, generando brechas de cobertura y riesgo en los SLA.",
+  "problem.c4h": "Costes de Formación", "problem.c4p": "Las nuevas incorporaciones requieren semanas de incorporación antes de alcanzar eficiencia operativa. El conocimiento se pierde cada vez que alguien abandona la organización.",
+  "problem.c5h": "Presión sobre los SLA", "problem.c5p": "Los compromisos de tiempo de respuesta son cada vez más difíciles de mantener cuando los volúmenes alcanzan su pico y la atención decae por el trabajo repetitivo.",
+  "problem.c6h": "Inconsistencia Humana", "problem.c6p": "La calidad varía entre turnos, agentes y niveles de fatiga. Una gestión inconsistente de primera línea incrementa las tasas de escalado y la insatisfacción de los usuarios.",
+  "problem.c7h": "Cobertura Operativa Limitada", "problem.c7p": "Las operaciones exclusivamente humanas dejan brechas en horarios nocturnos, fines de semana y festivos — incrementando el tiempo medio de resolución.",
+  "problem.c8h": "El riesgo estructural", "problem.c8p": "Sin automatización, las estructuras de costes IT se convierten en un freno para la transformación digital, no en un catalizador.",
+  "problem.statement": "Las operaciones manuales de primera línea no escalan al ritmo que exige la demanda IT moderna.",
+  "solution.label": "La Plataforma", "solution.h2": "Despliegue una Fuerza Laboral IA de Primera Línea.",
+  "solution.intro": "First Line AI es infraestructura operacional, no un asistente conversacional. Se integra a nivel de sistema con su entorno ITSM existente y procesa tickets de forma autónoma, a escala, con calidad consistente y trazabilidad completa.",
+  "solution.itsm_label": "Integraciones ITSM nativas", "solution.cap_label": "Capacidades de automatización", "solution.custom_itsm": "Entornos ITSM personalizados",
+  "solution.cap1": "Clasificación y triaje de tickets", "solution.cap2": "Resets de contraseña y desbloqueo de cuentas", "solution.cap3": "Aprovisionamiento de accesos",
+  "solution.cap4": "Monitorización y cumplimiento de SLA", "solution.cap5": "Respuestas basadas en base de conocimiento", "solution.cap6": "Resolución automática condicional",
+  "solution.cap7": "Enrutamiento basado en confianza", "solution.cap8": "Escalado a ingenieros humanos", "solution.cap9": "Orquestación de flujos de automatización",
+  "solution.statement": "Esto es <strong>infraestructura operacional</strong>, no un chatbot. Una unidad de Fuerza Laboral IA procesa miles de tickets al mes con calidad consistente, auditable y sin fatiga.",
+  "roi.label": "Retorno sobre la Inversión", "roi.h2": "Diseñado para un ROI Operacional Medible.",
+  "roi.intro": "La dirección de IT necesita justificar la inversión en automatización con datos concretos. First Line AI está diseñado desde su base para generar un ROI claro y demostrable, comenzando desde el piloto de 60 días.",
+  "roi.trad_badge": "Modelo tradicional", "roi.trad_title": "Empleado IT de primera línea",
+  "roi.t1l": "Salario base", "roi.t2l": "Impuestos y cotizaciones", "roi.t2v": "+16–22% coste adicional", "roi.t3l": "Bajas y vacaciones", "roi.t3v": "~25 días / año",
+  "roi.t4l": "Espacio de trabajo y equipamiento", "roi.t4v": "€3.000 – €6.000 / año", "roi.t5l": "Formación y gestión", "roi.t5v": "€2.000 – €5.000 / año",
+  "roi.t6l": "Horas operativas", "roi.t6v": "~1.760 hrs / año", "roi.trad_total_label": "Coste anual real por FTE",
+  "roi.ai_title": "Unidad de Fuerza Laboral IA", "roi.a1l": "Modelo de suscripción", "roi.a1v": "Predecible y fijo", "roi.a2l": "Escalado inmediato", "roi.a2v": "Sin procesos de contratación",
+  "roi.a3l": "Bajas y vacaciones", "roi.a3v": "Ninguna", "roi.a4l": "Espacio y equipamiento", "roi.a4v": "Ninguno",
+  "roi.a5l": "Incorporación y formación", "roi.a5v": "Ninguna", "roi.a6l": "Horas operativas", "roi.a6v": "8.760 hrs / año — 24/7", "roi.ai_total_label": "A partir de",
+  "roi.statement": "Automatización que refuerza su equipo IT — sin reemplazar el talento estratégico. First Line AI gestiona el volumen; sus ingenieros generan el valor.",
+  "pricing.label": "Precios", "pricing.h2": "Precios Empresariales para Automatización de Fuerza Laboral IA.",
+  "pricing.intro": "Elija el modelo de despliegue que se adapte a su madurez en automatización y volumen de tickets. Todos los planes incluyen soporte de integración, panel de análisis y un proceso de incorporación estructurado.",
+  "pricing.pilot_label": "Piloto — Disponibilidad limitada", "pricing.pilot_name": "Programa Piloto",
+  "pricing.pilot_pos": "Validación de bajo riesgo para equipos IT orientados a la innovación. Demuestre el ROI antes de comprometerse a escala.",
+  "pricing.pilot_cycle": "pago único — piloto de 60 días", "pricing.pilot_f1": "1 integración ITSM — TOPdesk o ServiceNow",
+  "pricing.pilot_f2": "Hasta 2.000 tickets procesados", "pricing.pilot_f3": "Modo human-in-the-loop",
+  "pricing.pilot_f4": "10 casos de uso de automatización predefinidos", "pricing.pilot_f5": "Panel de análisis básico",
+  "pricing.pilot_f6": "Soporte de incorporación dedicado", "pricing.pilot_f7": "Informe de impacto ROI al cierre de 60 días",
+  "pricing.pilot_cta": "Iniciar programa piloto", "pricing.popular": "Más popular",
+  "pricing.growth_label": "Crecimiento", "pricing.growth_name": "Plan de Crecimiento",
+  "pricing.growth_pos": "Diseñado para departamentos IT medianos que escalan la automatización en sus operaciones de tickets cotidianas.",
+  "pricing.growth_cycle": "por mes, facturación anual", "pricing.growth_overage": "+ €0,60 / ticket por encima de 3.000 / mes",
+  "pricing.growth_f1": "Hasta 3.000 tickets al mes", "pricing.growth_f2": "Borrador IA y resolución automática condicional",
+  "pricing.growth_f3": "1 integración ITSM", "pricing.growth_f4": "Motor de enrutamiento basado en confianza",
+  "pricing.growth_f5": "Panel de SLA y rendimiento", "pricing.growth_f6": "Soporte por email y prioritario",
+  "pricing.growth_cta": "Comenzar ahora",
+  "pricing.ent_label": "Enterprise", "pricing.ent_name": "Plan Enterprise",
+  "pricing.ent_pos": "Automatización completa de Fuerza Laboral IA para grandes organizaciones IT con requisitos avanzados de cumplimiento y despliegue.",
+  "pricing.ent_cycle": "por mes, facturación anual", "pricing.ent_overage": "+ €0,45 / ticket por encima de 8.000 / mes",
+  "pricing.ent_f1": "Hasta 8.000 tickets al mes", "pricing.ent_f2": "Despliegue multidepartamental",
+  "pricing.ent_f3": "Enrutamiento avanzado por confianza y riesgo", "pricing.ent_f4": "Opción de despliegue privado disponible",
+  "pricing.ent_f5": "Paquete de revisión de seguridad y cumplimiento", "pricing.ent_f6": "Incorporación e implementación dedicadas",
+  "pricing.ent_f7": "Soporte enterprise prioritario", "pricing.ent_cta": "Contactar con ventas",
+  "pricing.addons_label": "Complementos", "pricing.addons_sub": "Extensiones operacionales avanzadas para entornos IT maduros. Disponibles en cualquier plan.",
+  "pricing.addon1_name": "Desbloqueo de Resolución Automática", "pricing.addon1_desc": "Habilite la resolución autónoma de tickets para categorías de alta confianza y bajo riesgo, sin revisión humana por ticket.",
+  "pricing.addon2_name": "Módulo de Automatización de RRHH", "pricing.addon2_desc": "Extienda la automatización IA a operaciones de RRHH mediante integración con AFAS o Visma — altas, bajas y cambios de acceso gestionados automáticamente.",
+  "pricing.addon3_name": "Enrutamiento Privado de Modelo IA", "pricing.addon3_desc": "Dirija toda la inferencia IA a través de su entorno Azure propio o infraestructura on-premises. Soberanía total de datos sin exposición externa.",
+  "pricing.per_month": "mes",
+  "talent.label": "Potenciación del Equipo", "talent.h2": "Eleve a su Equipo IT.",
+  "talent.p1": "La Automatización de Fuerza Laboral IA no es una estrategia de reducción. Es una estrategia de reasignación. Cuando First Line AI absorbe la carga de trabajo digital repetitiva, sus ingenieros recuperan tiempo para el trabajo que realmente requiere expertise humano.",
+  "talent.p2": "Su equipo se centra en lo que importa:",
+  "talent.li1": "Investigación de incidencias complejas y análisis de causa raíz", "talent.li2": "Diseño de infraestructura y mejora continua",
+  "talent.li3": "Iniciativas de seguridad y gestión de riesgos", "talent.li4": "Innovación estratégica y transformación digital",
+  "talent.li5": "Operaciones presenciales que requieren intervención física",
+  "talent.m1l": "Tickets gestionados de forma autónoma", "talent.m1s": "Por unidad de Fuerza Laboral IA, con enrutamiento basado en confianza",
+  "talent.m2l": "Disponibilidad operacional", "talent.m2s": "Sin gestión de turnos ni planificación de vacaciones",
+  "talent.m3l": "Tiempo hasta producción", "talent.m3s": "Desde la aprobación del piloto hasta el despliegue operativo en producción",
+  "talent.m4l": "Auditoría y supervisión", "talent.m4v": "Visibilidad total garantizada", "talent.m4s": "Cada acción registrada, enrutada y revisable por su equipo",
+  "trust.label": "Seguridad y Cumplimiento", "trust.h2": "Infraestructura de Nivel Enterprise. Por Diseño.",
+  "trust.intro": "First Line AI está construido para operar dentro de los perímetros de seguridad empresarial — no alrededor de ellos. Cada despliegue cumple los requisitos de gobernanza, privacidad y cumplimiento normativo esperados por grandes organizaciones IT.",
+  "trust.c1h": "Cumplimiento RGPD", "trust.c1p": "Todo el procesamiento de datos se realiza dentro de límites conformes. El tratamiento de datos personales cumple el reglamento de privacidad de la UE con documentación completa.",
+  "trust.c2h": "Control de Acceso Basado en Roles", "trust.c2p": "El control de acceso granular garantiza que cada miembro del equipo e integración de sistema opere dentro de los límites de permisos definidos.",
+  "trust.c3h": "Procesamiento de Datos Cifrado", "trust.c3p": "Todos los datos en reposo y en tránsito están cifrados. El contenido de los tickets no se almacena más allá de la necesidad operativa.",
+  "trust.c4h": "Opciones de Despliegue Privado", "trust.c4p": "Para organizaciones que requieren aislamiento de datos, First Line AI puede desplegarse dentro de su propio tenant Azure o infraestructura on-premises.",
+  "trust.c5h": "Registros de Auditoría y Gobernanza", "trust.c5p": "Cada acción automatizada queda registrada con una trazabilidad completa — para auditorías internas, externas y revisiones de cumplimiento.",
+  "trust.c6h": "Preparado para Azure y On-Premises", "trust.c6p": "El despliegue es flexible en entornos cloud, híbridos y on-premises, sin dependencia de infraestructura de terceros compartida.",
+  "cta.label": "Listo para desplegar", "cta.h2": "Su Primera Línea Debe Ser Infraestructura Inteligente.",
+  "cta.sub": "Los departamentos IT modernos automatizan lo que no requiere juicio humano. First Line AI proporciona a su organización la capacidad operacional para gestionar volumen a escala — mientras sus ingenieros se centran en el trabajo que realmente importa.",
+  "cta.cta1": "Reservar Llamada Estratégica Ejecutiva", "cta.cta2": "Iniciar Piloto de 60 Días",
+  "cta.note": "Todos los pilotos incluyen un NDA mutuo. Precios enterprise disponibles para volúmenes superiores a 8.000 tickets al mes.",
+  "footer.privacy": "Política de Privacidad", "footer.terms": "Términos de Servicio", "footer.security": "Seguridad", "footer.contact": "Contacto",
+  "footer.lang_note": "Disponible en inglés, español, francés, alemán y neerlandés.",
+  "footer.copy": "© 2025 First Line AI. Todos los derechos reservados."
+},
+
+fr: {
+  "meta.title": "First Line AI — Automatisation de la Main-d'œuvre IA pour les Opérations IT de Première Ligne",
+  "meta.description": "First Line AI s'intègre directement dans votre plateforme ITSM et gère de manière autonome vos opérations de première ligne à fort volume.",
+  "nav.problem": "Le Problème", "nav.platform": "Plateforme", "nav.roi": "ROI", "nav.pricing": "Tarifs", "nav.security": "Sécurité", "nav.cta": "Demander une Démo",
+  "hero.eyebrow": "Automatisation de la Main-d'œuvre IA pour les Opérations IT de Première Ligne",
+  "hero.h1": "Rationalisez vos Opérations IT de Première Ligne<br>avec l'<em>Automatisation de la Main-d'œuvre IA.</em>",
+  "hero.sub": "First Line AI s'intègre directement dans votre plateforme ITSM et prend en charge de manière autonome vos opérations à fort volume — optimisant l'efficacité opérationnelle, réduisant les délais et générant un ROI mesurable.",
+  "hero.cta1": "Demander une Démo Exécutive", "hero.cta2": "Lancer le Programme Pilote",
+  "hero.stat1": "Capacité opérationnelle", "hero.stat2": "Tickets traités / mois", "hero.stat3unit": "jours", "hero.stat3": "Du pilote à la production", "hero.scroll": "Défiler",
+  "problem.label": "Le Défi",
+  "problem.h2": "Les Opérations IT de Première Ligne Sont Coûteuses à Faire Évoluer.",
+  "problem.intro": "Les départements IT font face à une tension structurelle : les volumes de tickets progressent avec l'activité, tandis que les coûts de personnel, les pénuries de compétences et l'inconsistance opérationnelle rendent tout dimensionnement linéaire insoutenable.",
+  "problem.c1h": "Coûts de Personnel en Hausse", "problem.c1p": "Chaque ETP de première ligne représente un coût annuel réel de 70 000 à 85 000 € ou plus, en tenant compte des charges, avantages et frais généraux.",
+  "problem.c2h": "Volume de Tickets Croissant", "problem.c2p": "Les opérations numériques génèrent une demande de support exponentiellement plus importante. Les équipes manuelles ne peuvent absorber cette croissance sans augmenter les effectifs proportionnellement.",
+  "problem.c3h": "Pénurie de Talents", "problem.c3p": "Les professionnels qualifiés du support IT sont de plus en plus difficiles à recruter et fidéliser, créant des lacunes de couverture et des risques sur les SLA.",
+  "problem.c4h": "Coûts de Formation", "problem.c4p": "Les nouvelles recrues nécessitent plusieurs semaines d'intégration avant d'atteindre leur pleine efficacité. Le savoir-faire part à chaque départ.",
+  "problem.c5h": "Pression sur les SLA", "problem.c5p": "Les engagements de délai de réponse deviennent difficiles à tenir lorsque les volumes culminent et que la concentration diminue face aux tâches répétitives.",
+  "problem.c6h": "Incohérence Humaine", "problem.c6p": "La qualité varie selon les équipes, les agents et les niveaux de fatigue. Une gestion incohérente en première ligne accroît les taux d'escalade et l'insatisfaction.",
+  "problem.c7h": "Couverture Opérationnelle Limitée", "problem.c7p": "Les opérations entièrement humaines laissent des lacunes hors heures ouvrées, en week-end et lors des jours fériés — augmentant le délai moyen de résolution.",
+  "problem.c8h": "Le risque structurel", "problem.c8p": "Sans automatisation, les structures de coûts IT deviennent un frein à la transformation numérique, et non un levier.",
+  "problem.statement": "Les opérations manuelles de première ligne ne peuvent pas suivre le rythme de la demande IT moderne.",
+  "solution.label": "La Plateforme", "solution.h2": "Déployez une Main-d'œuvre IA de Première Ligne.",
+  "solution.intro": "First Line AI est une infrastructure opérationnelle — et non un assistant conversationnel. Elle s'intègre au niveau système avec votre environnement ITSM existant et traite les tickets de manière autonome, à grande échelle, avec une qualité constante et une traçabilité complète.",
+  "solution.itsm_label": "Intégrations ITSM natives", "solution.cap_label": "Capacités d'automatisation", "solution.custom_itsm": "Environnements ITSM personnalisés",
+  "solution.cap1": "Classification et triage des tickets", "solution.cap2": "Réinitialisation de mots de passe et déverrouillage de comptes", "solution.cap3": "Provisionnement des accès",
+  "solution.cap4": "Surveillance et respect des SLA", "solution.cap5": "Réponses basées sur la base de connaissances", "solution.cap6": "Résolution automatique conditionnelle",
+  "solution.cap7": "Routage basé sur la confiance", "solution.cap8": "Escalade vers les ingénieurs humains", "solution.cap9": "Orchestration des flux d'automatisation",
+  "solution.statement": "Il s'agit d'une <strong>infrastructure opérationnelle</strong>, non d'un chatbot. Une unité de Main-d'œuvre IA traite des milliers de tickets par mois avec une qualité constante, auditable — et sans fatigue.",
+  "roi.label": "Retour sur Investissement", "roi.h2": "Conçu pour un ROI Opérationnel Mesurable.",
+  "roi.intro": "Les dirigeants IT doivent justifier l'investissement en automatisation par des chiffres concrets. First Line AI est conçu pour produire un ROI clair et défendable dès le pilote de 60 jours.",
+  "roi.trad_badge": "Modèle traditionnel", "roi.trad_title": "Employé IT de première ligne",
+  "roi.t1l": "Salaire de base", "roi.t2l": "Charges patronales et retraite", "roi.t2v": "+16–22% de charges", "roi.t3l": "Arrêts maladie et congés", "roi.t3v": "~25 jours / an",
+  "roi.t4l": "Espace de travail et matériel", "roi.t4v": "3 000 – 6 000 € / an", "roi.t5l": "Formation et management", "roi.t5v": "2 000 – 5 000 € / an",
+  "roi.t6l": "Heures opérationnelles", "roi.t6v": "~1 760 h / an", "roi.trad_total_label": "Coût annuel réel par ETP",
+  "roi.ai_title": "Unité de Main-d'œuvre IA", "roi.a1l": "Modèle d'abonnement", "roi.a1v": "Prévisible et fixe", "roi.a2l": "Mise à l'échelle immédiate", "roi.a2v": "Sans cycles de recrutement",
+  "roi.a3l": "Arrêts maladie et congés", "roi.a3v": "Aucun", "roi.a4l": "Espace de travail et matériel", "roi.a4v": "Aucun",
+  "roi.a5l": "Intégration et formation", "roi.a5v": "Aucune", "roi.a6l": "Heures opérationnelles", "roi.a6v": "8 760 h / an — 24h/24, 7j/7", "roi.ai_total_label": "À partir de",
+  "roi.statement": "Une automatisation qui renforce votre équipe IT — sans remplacer les talents stratégiques. First Line AI gère le volume ; vos ingénieurs génèrent la valeur.",
+  "pricing.label": "Tarifs", "pricing.h2": "Tarification Entreprise pour l'Automatisation de la Main-d'œuvre IA.",
+  "pricing.intro": "Choisissez le modèle de déploiement adapté à votre maturité en automatisation et à votre volume de tickets. Tous les plans incluent le support d'intégration, un tableau de bord analytique et un processus d'intégration structuré.",
+  "pricing.pilot_label": "Pilote — Disponibilité limitée", "pricing.pilot_name": "Programme Pilote",
+  "pricing.pilot_pos": "Validation à faible risque pour les équipes IT orientées innovation. Prouvez le ROI avant de vous engager à grande échelle.",
+  "pricing.pilot_cycle": "paiement unique — pilote de 60 jours", "pricing.pilot_f1": "1 intégration ITSM — TOPdesk ou ServiceNow",
+  "pricing.pilot_f2": "Jusqu'à 2 000 tickets traités", "pricing.pilot_f3": "Mode human-in-the-loop",
+  "pricing.pilot_f4": "10 cas d'usage d'automatisation prédéfinis", "pricing.pilot_f5": "Tableau de bord analytique de base",
+  "pricing.pilot_f6": "Support d'intégration dédié", "pricing.pilot_f7": "Rapport d'impact ROI à la clôture des 60 jours",
+  "pricing.pilot_cta": "Lancer le programme pilote", "pricing.popular": "Le plus populaire",
+  "pricing.growth_label": "Croissance", "pricing.growth_name": "Plan Croissance",
+  "pricing.growth_pos": "Conçu pour les départements IT de taille intermédiaire qui développent l'automatisation de leurs opérations quotidiennes.",
+  "pricing.growth_cycle": "par mois, facturation annuelle", "pricing.growth_overage": "+ 0,60 € / ticket au-delà de 3 000 / mois",
+  "pricing.growth_f1": "Jusqu'à 3 000 tickets par mois", "pricing.growth_f2": "Brouillon IA et résolution automatique conditionnelle",
+  "pricing.growth_f3": "1 intégration ITSM", "pricing.growth_f4": "Moteur de routage basé sur la confiance",
+  "pricing.growth_f5": "Tableau de bord SLA et performance", "pricing.growth_f6": "Support par email et prioritaire",
+  "pricing.growth_cta": "Démarrer maintenant",
+  "pricing.ent_label": "Entreprise", "pricing.ent_name": "Plan Entreprise",
+  "pricing.ent_pos": "Automatisation complète de la Main-d'œuvre IA pour les grandes organisations IT avec des exigences avancées en matière de conformité et de déploiement.",
+  "pricing.ent_cycle": "par mois, facturation annuelle", "pricing.ent_overage": "+ 0,45 € / ticket au-delà de 8 000 / mois",
+  "pricing.ent_f1": "Jusqu'à 8 000 tickets par mois", "pricing.ent_f2": "Déploiement multi-départemental",
+  "pricing.ent_f3": "Routage avancé par confiance et risque", "pricing.ent_f4": "Option de déploiement privé disponible",
+  "pricing.ent_f5": "Pack de révision sécurité et conformité", "pricing.ent_f6": "Intégration et mise en œuvre dédiées",
+  "pricing.ent_f7": "Support entreprise prioritaire", "pricing.ent_cta": "Contacter les ventes",
+  "pricing.addons_label": "Compléments", "pricing.addons_sub": "Extensions opérationnelles avancées pour les environnements IT matures. Disponibles sur tout plan.",
+  "pricing.addon1_name": "Déverrouillage de la Résolution Automatique", "pricing.addon1_desc": "Activez la résolution autonome des tickets pour les catégories à haute confiance et faible risque — sans révision humaine par ticket.",
+  "pricing.addon2_name": "Module d'Automatisation RH", "pricing.addon2_desc": "Étendez l'automatisation IA aux opérations RH via AFAS ou Visma — intégrations, départs et modifications d'accès gérés automatiquement.",
+  "pricing.addon3_name": "Routage Privé de Modèle IA", "pricing.addon3_desc": "Dirigez toutes les inférences IA via votre propre environnement Azure ou infrastructure on-premises. Souveraineté totale des données sans exposition externe.",
+  "pricing.per_month": "mois",
+  "talent.label": "Valorisation des Équipes", "talent.h2": "Valorisez Votre Équipe IT.",
+  "talent.p1": "L'Automatisation de la Main-d'œuvre IA n'est pas une stratégie de réduction. C'est une stratégie de réallocation. Lorsque First Line AI absorbe la charge de travail numérique répétitive, vos ingénieurs récupèrent du temps pour des missions nécessitant véritablement une expertise humaine.",
+  "talent.p2": "Votre équipe se concentre sur l'essentiel :",
+  "talent.li1": "Investigation des incidents complexes et analyse des causes racines", "talent.li2": "Conception d'infrastructure et amélioration continue",
+  "talent.li3": "Initiatives de sécurité et gestion des risques", "talent.li4": "Innovation stratégique et transformation numérique",
+  "talent.li5": "Opérations sur site nécessitant une présence physique",
+  "talent.m1l": "Tickets traités de manière autonome", "talent.m1s": "Par unité de Main-d'œuvre IA, avec routage basé sur la confiance",
+  "talent.m2l": "Disponibilité opérationnelle", "talent.m2s": "Sans gestion des plannings ni des congés",
+  "talent.m3l": "Délai de mise en production", "talent.m3s": "De la validation du pilote au déploiement opérationnel",
+  "talent.m4l": "Audit et supervision", "talent.m4v": "Visibilité totale garantie", "talent.m4s": "Chaque action enregistrée, routée et consultable par votre équipe",
+  "trust.label": "Sécurité et Conformité", "trust.h2": "Infrastructure de Niveau Entreprise. Par Conception.",
+  "trust.intro": "First Line AI est conçu pour opérer au sein des périmètres de sécurité entreprise — et non autour d'eux. Chaque déploiement répond aux exigences de gouvernance, de confidentialité et de conformité attendues par les grandes organisations IT.",
+  "trust.c1h": "Conformité RGPD", "trust.c1p": "Tout le traitement des données s'effectue dans des limites conformes. La gestion des données personnelles respecte le règlement européen sur la protection des données.",
+  "trust.c2h": "Contrôle d'Accès Basé sur les Rôles", "trust.c2p": "Le contrôle d'accès granulaire garantit que chaque membre de l'équipe et intégration système opère dans les limites de permission définies.",
+  "trust.c3h": "Traitement des Données Chiffré", "trust.c3p": "Toutes les données au repos et en transit sont chiffrées. Le contenu des tickets n'est pas conservé au-delà de la nécessité opérationnelle.",
+  "trust.c4h": "Options de Déploiement Privé", "trust.c4p": "Pour les organisations nécessitant un isolement des données, First Line AI peut être déployé dans votre propre tenant Azure ou infrastructure on-premises.",
+  "trust.c5h": "Journaux d'Audit et Gouvernance", "trust.c5p": "Chaque action automatisée est enregistrée avec une piste d'audit complète — pour la gouvernance interne, les audits externes et les révisions de conformité.",
+  "trust.c6h": "Compatible Azure et On-Premises", "trust.c6p": "Le déploiement est flexible sur les environnements cloud, hybrides et on-premises — sans dépendance vis-à-vis d'infrastructures tierces partagées.",
+  "cta.label": "Prêt à déployer", "cta.h2": "Votre Première Ligne Doit Être une Infrastructure Intelligente.",
+  "cta.sub": "Les départements IT modernes automatisent ce qui ne nécessite pas de jugement humain. First Line AI offre à votre organisation la capacité opérationnelle de gérer le volume à grande échelle — tandis que vos ingénieurs se concentrent sur les missions qui comptent.",
+  "cta.cta1": "Réserver un Appel Stratégique Exécutif", "cta.cta2": "Démarrer le Pilote de 60 Jours",
+  "cta.note": "Tous les pilotes incluent un NDA mutuel. Tarification entreprise disponible pour les volumes supérieurs à 8 000 tickets par mois.",
+  "footer.privacy": "Politique de Confidentialité", "footer.terms": "Conditions d'Utilisation", "footer.security": "Sécurité", "footer.contact": "Contact",
+  "footer.lang_note": "Disponible en anglais, espagnol, français, allemand et néerlandais.",
+  "footer.copy": "© 2025 First Line AI. Tous droits réservés."
+},
+
+de: {
+  "meta.title": "First Line AI — KI-Arbeitskraft-Automatisierung für den IT-Erstlinien-Betrieb",
+  "meta.description": "First Line AI integriert sich direkt in Ihre ITSM-Plattform und übernimmt autonom hochvolumige Erstlinien-Betriebsaufgaben.",
+  "nav.problem": "Die Herausforderung", "nav.platform": "Plattform", "nav.roi": "ROI", "nav.pricing": "Preise", "nav.security": "Sicherheit", "nav.cta": "Demo anfragen",
+  "hero.eyebrow": "KI-Arbeitskraft-Automatisierung für den IT-Erstlinien-Betrieb",
+  "hero.h1": "Zuverlässige Automatisierung für den<br>IT-Erstlinien-Betrieb — <em>strukturiert, skalierbar, messbar.</em>",
+  "hero.sub": "First Line AI integriert sich direkt in Ihre ITSM-Plattform und übernimmt hochvolumige Erstlinienaufgaben autonom — mit dokumentierter Qualität, nachvollziehbarer Governance und messbarem ROI.",
+  "hero.cta1": "Executive-Demo anfragen", "hero.cta2": "Pilotprogramm starten",
+  "hero.stat1": "Operative Verfügbarkeit", "hero.stat2": "Tickets verarbeitet / Monat", "hero.stat3unit": "Tage", "hero.stat3": "Vom Pilot zur Produktion", "hero.scroll": "Scrollen",
+  "problem.label": "Die Herausforderung",
+  "problem.h2": "IT-Erstlinien-Betrieb Ist Strukturell Schwer Skalierbar.",
+  "problem.intro": "IT-Abteilungen stehen vor einer strukturellen Spannung: Das Ticketvolumen wächst mit dem Unternehmen, während Personalkosten, Qualifikationslücken und operative Inkonsistenz einen linearen Ausbau unwirtschaftlich machen.",
+  "problem.c1h": "Steigende Personalkosten", "problem.c1p": "Jede Erstlinien-Vollzeitstelle verursacht reale Jahresgesamtkosten von 70.000–85.000 € oder mehr, wenn Steuern, Sozialleistungen und Gemeinkosten berücksichtigt werden.",
+  "problem.c2h": "Wachsendes Ticketvolumen", "problem.c2p": "Digitale Betriebsabläufe erzeugen exponentiell mehr Supportbedarf. Manuelle Teams können dieses Wachstum nicht ohne proportionale Personalaufstockung absorbieren.",
+  "problem.c3h": "Fachkräftemangel", "problem.c3p": "Qualifizierte IT-Supportfachkräfte sind zunehmend schwer zu gewinnen und zu halten, was Abdeckungslücken und SLA-Risiken erzeugt.",
+  "problem.c4h": "Schulungsaufwand", "problem.c4p": "Neue Mitarbeitende benötigen Wochen der Einarbeitung, um operative Effizienz zu erreichen. Know-how verlässt das Unternehmen mit jedem Abgang.",
+  "problem.c5h": "SLA-Druck", "problem.c5p": "Reaktionszeitverpflichtungen werden bei Lastspitzen, Schichtenden und ermüdungsbedingtem Aufmerksamkeitsverlust immer schwerer einzuhalten.",
+  "problem.c6h": "Menschliche Inkonsistenz", "problem.c6p": "Die Qualität variiert zwischen Schichten, Mitarbeitenden und Ermüdungsgraden. Inkonsistente Erstlinienbearbeitung erhöht Eskalationsraten und Unzufriedenheit.",
+  "problem.c7h": "Begrenzte Betriebszeiten", "problem.c7p": "Rein menschliche Betriebsmodelle hinterlassen Lücken in Nacht-, Wochenend- und Feiertagsabdeckung — was die mittlere Lösungszeit erhöht.",
+  "problem.c8h": "Das strukturelle Risiko", "problem.c8p": "Ohne Automatisierung werden IT-Kostenstrukturen zu einem Hemmnis der digitalen Transformation — statt zu einem Enabler.",
+  "problem.statement": "Manuelle Erstlinien-Betriebsmodelle skalieren nicht mit der modernen IT-Nachfrage.",
+  "solution.label": "Die Plattform", "solution.h2": "Deployen Sie eine KI-Erstlinien-Arbeitskraft.",
+  "solution.intro": "First Line AI ist operative Infrastruktur — kein konversationeller Assistent. Die Lösung integriert sich auf Systemebene in Ihre bestehende ITSM-Umgebung und verarbeitet Tickets autonom, skalierbar, in dokumentierter Qualität und mit vollständiger Nachvollziehbarkeit.",
+  "solution.itsm_label": "Native ITSM-Integrationen", "solution.cap_label": "Automatisierungsfähigkeiten", "solution.custom_itsm": "Individuelle ITSM-Umgebungen",
+  "solution.cap1": "Ticket-Klassifizierung & Triage", "solution.cap2": "Passwort-Resets & Konto-Entsperrungen", "solution.cap3": "Zugriffsbereitstellung",
+  "solution.cap4": "SLA-Monitoring & Durchsetzung", "solution.cap5": "Wissensbasierte Antworten", "solution.cap6": "Bedingte automatische Lösung",
+  "solution.cap7": "Konfidenzbasiertes Routing", "solution.cap8": "Eskalation an menschliche Ingenieure", "solution.cap9": "Automatisierungs-Workflow-Orchestrierung",
+  "solution.statement": "Dies ist <strong>operative Infrastruktur</strong>, kein Chatbot. Eine KI-Arbeitskraft-Einheit verarbeitet tausende Tickets pro Monat mit konsistenter, auditierbarer Qualität — und ohne Ermüdungseffekte.",
+  "roi.label": "Return on Investment", "roi.h2": "Entwickelt für Messbaren Operativen ROI.",
+  "roi.intro": "IT-Führungskräfte müssen Automatisierungsinvestitionen mit belastbaren Zahlen rechtfertigen. First Line AI ist von Grund auf darauf ausgelegt, einen klaren, vertretbaren ROI zu liefern — beginnend mit dem 60-Tage-Pilot.",
+  "roi.trad_badge": "Traditionelles Modell", "roi.trad_title": "Erstlinien-IT-Mitarbeitender",
+  "roi.t1l": "Grundgehalt", "roi.t2l": "Arbeitgeberabgaben & Rente", "roi.t2v": "+16–22% Zusatzkosten", "roi.t3l": "Krankenstand & Urlaub", "roi.t3v": "~25 Tage / Jahr",
+  "roi.t4l": "Arbeitsplatz & Hardware", "roi.t4v": "3.000–6.000 € / Jahr", "roi.t5l": "Schulung & Management", "roi.t5v": "2.000–5.000 € / Jahr",
+  "roi.t6l": "Operative Stunden", "roi.t6v": "~1.760 Std. / Jahr", "roi.trad_total_label": "Reale Jahresgesamtkosten je VZÄ",
+  "roi.ai_title": "KI-Arbeitskraft-Einheit", "roi.a1l": "Abonnementmodell", "roi.a1v": "Planbar & fix", "roi.a2l": "Sofortige Skalierung", "roi.a2v": "Keine Einstellungszyklen",
+  "roi.a3l": "Krankenstand & Urlaub", "roi.a3v": "Keiner", "roi.a4l": "Arbeitsplatz & Hardware", "roi.a4v": "Keine",
+  "roi.a5l": "Einarbeitung & Schulung", "roi.a5v": "Keine", "roi.a6l": "Operative Stunden", "roi.a6v": "8.760 Std. / Jahr — 24/7", "roi.ai_total_label": "Ab",
+  "roi.statement": "Automatisierung, die Ihre IT-Arbeitskraft stärkt — ohne strategische Fachkräfte zu ersetzen. First Line AI bewältigt das Volumen; Ihre Ingenieure schaffen den Mehrwert.",
+  "pricing.label": "Preise", "pricing.h2": "Enterprise-Preismodell für KI-Arbeitskraft-Automatisierung.",
+  "pricing.intro": "Wählen Sie das Bereitstellungsmodell, das Ihrem Automatisierungsreifegrad und Ticketvolumen entspricht. Alle Pläne umfassen Integrationsunterstützung, ein Analyse-Dashboard und einen strukturierten Onboarding-Prozess.",
+  "pricing.pilot_label": "Pilot — Begrenzte Verfügbarkeit", "pricing.pilot_name": "Pilotprogramm",
+  "pricing.pilot_pos": "Risikoarme Validierung für innovationsorientierte IT-Teams. Belegen Sie den ROI, bevor Sie eine großangelegte Verpflichtung eingehen.",
+  "pricing.pilot_cycle": "Einmalzahlung — 60-Tage-Pilot", "pricing.pilot_f1": "1 ITSM-Integration — TOPdesk oder ServiceNow",
+  "pricing.pilot_f2": "Bis zu 2.000 verarbeitete Tickets", "pricing.pilot_f3": "Human-in-the-loop-Modus",
+  "pricing.pilot_f4": "10 vordefinierte Automatisierungs-Use-Cases", "pricing.pilot_f5": "Basis-Analyse-Dashboard",
+  "pricing.pilot_f6": "Dedizierter Onboarding-Support", "pricing.pilot_f7": "ROI-Wirkungsbericht nach 60 Tagen",
+  "pricing.pilot_cta": "Pilotprogramm starten", "pricing.popular": "Beliebteste Wahl",
+  "pricing.growth_label": "Wachstum", "pricing.growth_name": "Wachstumsplan",
+  "pricing.growth_pos": "Konzipiert für mittelgroße IT-Abteilungen, die Automatisierung im laufenden Ticketbetrieb skalieren.",
+  "pricing.growth_cycle": "pro Monat, jährliche Abrechnung", "pricing.growth_overage": "+ 0,60 € / Ticket über 3.000 / Monat",
+  "pricing.growth_f1": "Bis zu 3.000 Tickets pro Monat", "pricing.growth_f2": "KI-Entwurf und bedingte automatische Lösung",
+  "pricing.growth_f3": "1 ITSM-Integration", "pricing.growth_f4": "Konfidenzbasierte Routing-Engine",
+  "pricing.growth_f5": "SLA- und Performance-Dashboard", "pricing.growth_f6": "E-Mail- und Prioritäts-Support",
+  "pricing.growth_cta": "Jetzt starten",
+  "pricing.ent_label": "Enterprise", "pricing.ent_name": "Enterprise-Plan",
+  "pricing.ent_pos": "Vollständige KI-Arbeitskraft-Automatisierung für große IT-Organisationen mit erweiterten Compliance- und Bereitstellungsanforderungen.",
+  "pricing.ent_cycle": "pro Monat, jährliche Abrechnung", "pricing.ent_overage": "+ 0,45 € / Ticket über 8.000 / Monat",
+  "pricing.ent_f1": "Bis zu 8.000 Tickets pro Monat", "pricing.ent_f2": "Abteilungsübergreifender Einsatz",
+  "pricing.ent_f3": "Erweitertes konfidenz- und risikobasiertes Routing", "pricing.ent_f4": "Private Bereitstellungsoption verfügbar",
+  "pricing.ent_f5": "Sicherheits- und Compliance-Review-Paket", "pricing.ent_f6": "Dediziertes Onboarding und Implementierung",
+  "pricing.ent_f7": "Priorisierter Enterprise-Support", "pricing.ent_cta": "Vertrieb kontaktieren",
+  "pricing.addons_label": "Erweiterungen", "pricing.addons_sub": "Erweiterte operative Erweiterungen für ausgereifte IT-Umgebungen. Für alle Pläne verfügbar.",
+  "pricing.addon1_name": "Auto-Resolve-Freischaltung", "pricing.addon1_desc": "Ermöglicht die vollständig autonome Ticket-Lösung für hochkonfidente, risikoarme Kategorien — ohne manuelle Überprüfung je Ticket.",
+  "pricing.addon2_name": "HR-Automatisierungsmodul", "pricing.addon2_desc": "Erweitern Sie KI-Automatisierung auf HR-Prozesse via AFAS- oder Visma-Integration — Onboarding, Offboarding und Zugriffsänderungen automatisch abgewickelt.",
+  "pricing.addon3_name": "Privates KI-Modell-Routing", "pricing.addon3_desc": "Leiten Sie alle KI-Inferenzen durch Ihre eigene Azure-Umgebung oder On-Premises-Infrastruktur. Vollständige Datensouveränität ohne externe Exposition.",
+  "pricing.per_month": "Monat",
+  "talent.label": "Aufwertung der Belegschaft", "talent.h2": "Stärken Sie Ihr IT-Team.",
+  "talent.p1": "KI-Arbeitskraft-Automatisierung ist keine Reduktionsstrategie. Es ist eine Umverteilungsstrategie. Wenn First Line AI die repetitive digitale Arbeitslast übernimmt, gewinnen Ihre Ingenieure Zeit für Aufgaben, die echtes menschliches Fachwissen erfordern.",
+  "talent.p2": "Ihr Team konzentriert sich auf das Wesentliche:",
+  "talent.li1": "Analyse komplexer Vorfälle und Ursachenforschung", "talent.li2": "Infrastrukturplanung und kontinuierliche Verbesserung",
+  "talent.li3": "Sicherheitsinitiativen und Risikomanagement", "talent.li4": "Strategische Innovation und digitale Transformation",
+  "talent.li5": "Vor-Ort-Einsätze mit physischer Präsenz",
+  "talent.m1l": "Autonom verarbeitete Tickets", "talent.m1s": "Je KI-Arbeitskraft-Einheit, mit konfidenzbasiertem Routing",
+  "talent.m2l": "Operative Verfügbarkeit", "talent.m2s": "Keine Schichtplanung, keine Urlaubskoordination erforderlich",
+  "talent.m3l": "Zeit bis zur Produktion", "talent.m3s": "Von der Pilot-Abnahme bis zum operativen Live-Betrieb",
+  "talent.m4l": "Audit und Kontrolle", "talent.m4v": "Vollständige Transparenz gewährleistet", "talent.m4s": "Jede Aktion protokolliert, geroutet und von Ihrem Team einsehbar",
+  "trust.label": "Sicherheit & Compliance", "trust.h2": "Enterprise-Infrastruktur. By Design.",
+  "trust.intro": "First Line AI ist darauf ausgelegt, innerhalb der Sicherheitsgrenzen von Unternehmen zu operieren — nicht darum herum. Jede Bereitstellung erfüllt die Governance-, Datenschutz- und Compliance-Anforderungen großer IT-Organisationen.",
+  "trust.c1h": "DSGVO-Konformität", "trust.c1p": "Alle Datenverarbeitungen erfolgen innerhalb regulatorisch konformer Grenzen. Die Verarbeitung personenbezogener Daten entspricht der EU-Datenschutzverordnung mit vollständiger Dokumentation.",
+  "trust.c2h": "Rollenbasierte Zugriffskontrolle", "trust.c2p": "Granulare Zugriffssteuerung stellt sicher, dass jedes Teammitglied und jede Systemintegration innerhalb definierter Berechtigungsgrenzen operiert.",
+  "trust.c3h": "Verschlüsselte Datenverarbeitung", "trust.c3p": "Alle Daten im Ruhezustand und während der Übertragung sind verschlüsselt. Ticket-Inhalte werden nicht über die operative Notwendigkeit hinaus gespeichert.",
+  "trust.c4h": "Private Bereitstellungsoptionen", "trust.c4p": "Für Organisationen mit strengen Datenisolationsanforderungen kann First Line AI im eigenen Azure-Tenant oder auf eigener On-Premises-Infrastruktur bereitgestellt werden.",
+  "trust.c5h": "Audit-Protokolle & Governance", "trust.c5p": "Jede automatisierte Aktion wird mit vollständigem Audit-Trail protokolliert — für interne Governance, externe Prüfungen und Compliance-Reviews.",
+  "trust.c6h": "Azure & On-Premises-fähig", "trust.c6p": "Die Bereitstellung ist flexibel über Cloud-, Hybrid- und On-Premises-Umgebungen — ohne Abhängigkeit von gemeinsam genutzter Drittanbieter-Infrastruktur.",
+  "cta.label": "Bereit zum Einsatz", "cta.h2": "Ihre Erstlinie Sollte Intelligente Infrastruktur Sein.",
+  "cta.sub": "Moderne IT-Abteilungen automatisieren, was kein menschliches Urteilsvermögen erfordert. First Line AI verleiht Ihrer Organisation die operative Kapazität, Volumen in großem Maßstab zu bewältigen — während Ihre Ingenieure sich auf die Arbeit konzentrieren, die zählt.",
+  "cta.cta1": "Executive-Strategiegespräch buchen", "cta.cta2": "60-Tage-Pilot starten",
+  "cta.note": "Alle Piloten umfassen ein gegenseitiges NDA. Enterprise-Preise für Volumina über 8.000 Tickets pro Monat verfügbar.",
+  "footer.privacy": "Datenschutzerklärung", "footer.terms": "Nutzungsbedingungen", "footer.security": "Sicherheit", "footer.contact": "Kontakt",
+  "footer.lang_note": "Verfügbar auf Englisch, Spanisch, Französisch, Deutsch und Niederländisch.",
+  "footer.copy": "© 2025 First Line AI. Alle Rechte vorbehalten."
+},
+
+nl: {
+  "meta.title": "First Line AI — AI-Werkautomatisering voor Eerstelijns IT-Operaties",
+  "meta.description": "First Line AI integreert rechtstreeks in uw ITSM-platform en verwerkt autonoom hoogvolume eerstelijnsoperaties.",
+  "nav.problem": "Het Probleem", "nav.platform": "Platform", "nav.roi": "ROI", "nav.pricing": "Prijzen", "nav.security": "Beveiliging", "nav.cta": "Demo Aanvragen",
+  "hero.eyebrow": "AI-Werkautomatisering voor Eerstelijns IT-Operaties",
+  "hero.h1": "Vervang Repetitief Eerstelijns IT-Werk<br>door <em>AI-Werkautomatisering.</em>",
+  "hero.sub": "First Line AI integreert rechtstreeks in uw ITSM-platform en verwerkt autonoom hoogvolume eerstelijnsoperaties — lagere kosten, hogere snelheid en een aantoonbare kostenbesparing die direct meetbaar is.",
+  "hero.cta1": "Executive Demo Aanvragen", "hero.cta2": "Pilotprogramma Starten",
+  "hero.stat1": "Operationele capaciteit", "hero.stat2": "Tickets verwerkt / maand", "hero.stat3unit": "dagen", "hero.stat3": "Van pilot naar productie", "hero.scroll": "Scrollen",
+  "problem.label": "De Uitdaging",
+  "problem.h2": "Eerstelijns IT-Operaties Zijn Duur om te Schalen.",
+  "problem.intro": "IT-afdelingen staan voor een structurele spanning: het ticketvolume groeit mee met de organisatie, maar personeelskosten, tekorten aan gekwalificeerd personeel en operationele inconsistentie maken lineaire groei onhoudbaar.",
+  "problem.c1h": "Stijgende Personeelskosten", "problem.c1p": "Elke eerstelijns fte brengt reële jaarlijkse kosten van €70.000–€85.000+ met zich mee als belastingen, vergoedingen en overhead worden meegeteld.",
+  "problem.c2h": "Groeiend Ticketvolume", "problem.c2p": "Digitale operaties genereren exponentieel meer supportvraag. Handmatige teams kunnen deze groei niet absorberen zonder evenredige uitbreiding van de bezetting.",
+  "problem.c3h": "Krapte op de Arbeidsmarkt", "problem.c3p": "Gekwalificeerde IT-supportprofessionals zijn steeds moeilijker te werven en te behouden, wat dekkingslekken en SLA-risico's veroorzaakt.",
+  "problem.c4h": "Inwerkkosten", "problem.c4p": "Nieuwe medewerkers hebben weken van inwerken nodig voor ze operationeel effectief zijn. Kennis vertrekt elke keer dat iemand de organisatie verlaat.",
+  "problem.c5h": "SLA-Druk", "problem.c5p": "Reactietijdverplichtingen worden bij piekvolumes, wisseling van diensten en concentratieverlies door herhaald handmatig werk steeds moeilijker te halen.",
+  "problem.c6h": "Menselijke Inconsistentie", "problem.c6p": "Kwaliteit varieert per dienst, medewerker en vermoeidheidsgraad. Inconsistente eerstelijnsafhandeling verhoogt escalatieratio's en gebruikersontevredenheid.",
+  "problem.c7h": "Beperkte Operationele Uren", "problem.c7p": "Volledig menselijke operaties laten gaten in avond-, weekend- en vakantiedekking — wat de gemiddelde oplostijd verhoogt.",
+  "problem.c8h": "Het structurele risico", "problem.c8p": "Zonder automatisering worden IT-kostenstructuren een rem op digitale transformatie in plaats van een aanjager ervan.",
+  "problem.statement": "Handmatige eerstelijnsoperaties schalen niet mee met de moderne IT-vraag.",
+  "solution.label": "Het Platform", "solution.h2": "Implementeer een AI-Eerstelijns Werkautomatisering.",
+  "solution.intro": "First Line AI is operationele infrastructuur — geen conversatie-assistent. Het integreert op systeemniveau met uw bestaande ITSM-omgeving en verwerkt tickets autonoom, op schaal, met consistente kwaliteit en volledige auditbaarheid.",
+  "solution.itsm_label": "Native ITSM-integraties", "solution.cap_label": "Automatiseringsmogelijkheden", "solution.custom_itsm": "Maatwerk ITSM-omgevingen",
+  "solution.cap1": "Ticketclassificatie & triage", "solution.cap2": "Wachtwoordresets & accountontgrendeling", "solution.cap3": "Toegangsverlening",
+  "solution.cap4": "SLA-monitoring & handhaving", "solution.cap5": "Kennisgebaseerde antwoorden", "solution.cap6": "Conditionele automatische oplossing",
+  "solution.cap7": "Vertrouwensgebaseerde routering", "solution.cap8": "Escalatie naar menselijke engineers", "solution.cap9": "Automatisering workflow-orkestratie",
+  "solution.statement": "Dit is <strong>operationele infrastructuur</strong>, geen chatbot. Eén AI-werkeenheid verwerkt duizenden tickets per maand met consistente, auditeerbare kwaliteit — en zonder vermoeidheid.",
+  "roi.label": "Return on Investment", "roi.h2": "Gebouwd voor Meetbare Operationele Kostenbesparing.",
+  "roi.intro": "IT-management moet automatiseringsinvesteringen onderbouwen met concrete cijfers. First Line AI is vanaf de grond ontworpen om een heldere, aantoonbare ROI te leveren — beginnend bij de pilot van 60 dagen.",
+  "roi.trad_badge": "Traditioneel model", "roi.trad_title": "Eerstelijns IT-medewerker",
+  "roi.t1l": "Basissalaris", "roi.t2l": "Werkgeverslasten & pensioen", "roi.t2v": "+16–22% overhead", "roi.t3l": "Ziekteverzuim & vakantie", "roi.t3v": "~25 dagen / jaar",
+  "roi.t4l": "Werkruimte & hardware", "roi.t4v": "€3.000 – €6.000 / jaar", "roi.t5l": "Opleiding & management", "roi.t5v": "€2.000 – €5.000 / jaar",
+  "roi.t6l": "Operationele uren", "roi.t6v": "~1.760 uur / jaar", "roi.trad_total_label": "Reële jaarlijkse kosten per fte",
+  "roi.ai_title": "AI-werkeenheid", "roi.a1l": "Abonnementsmodel", "roi.a1v": "Voorspelbaar & vast", "roi.a2l": "Direct schaalbaar", "roi.a2v": "Geen wervingscycli",
+  "roi.a3l": "Ziekteverzuim & vakantie", "roi.a3v": "Geen", "roi.a4l": "Werkruimte & hardware", "roi.a4v": "Geen",
+  "roi.a5l": "Inwerkperiode & opleiding", "roi.a5v": "Geen", "roi.a6l": "Operationele uren", "roi.a6v": "8.760 uur / jaar — 24/7", "roi.ai_total_label": "Vanaf",
+  "roi.statement": "Automatisering die uw IT-team versterkt — zonder strategisch talent te vervangen. First Line AI verwerkt het volume; uw engineers leveren de waarde.",
+  "pricing.label": "Prijzen", "pricing.h2": "Enterprise-Prijsstelling voor AI-Werkautomatisering.",
+  "pricing.intro": "Kies het implementatiemodel dat past bij uw automatiseringsvolwassenheid en ticketvolume. Alle plannen bevatten integratieondersteuning, een analysedashboard en een gestructureerd onboardingproces.",
+  "pricing.pilot_label": "Pilot — Beperkte beschikbaarheid", "pricing.pilot_name": "Pilotprogramma",
+  "pricing.pilot_pos": "Laagdrempelige validatie voor innovatiegerichte IT-teams. Bewijs de ROI voordat u grootschalig committeert.",
+  "pricing.pilot_cycle": "eenmalig — 60-daagse pilot", "pricing.pilot_f1": "1 ITSM-integratie — TOPdesk of ServiceNow",
+  "pricing.pilot_f2": "Tot 2.000 verwerkte tickets", "pricing.pilot_f3": "Human-in-the-loop modus",
+  "pricing.pilot_f4": "10 vooraf gedefinieerde automatiseringsscenario's", "pricing.pilot_f5": "Basis analysedashboard",
+  "pricing.pilot_f6": "Dedicated onboardingondersteuning", "pricing.pilot_f7": "ROI-impactrapport na 60 dagen",
+  "pricing.pilot_cta": "Pilot starten", "pricing.popular": "Meest gekozen",
+  "pricing.growth_label": "Groei", "pricing.growth_name": "Groeiplan",
+  "pricing.growth_pos": "Ontworpen voor middelgrote IT-afdelingen die automatisering inzetten voor dagelijkse ticketoperaties.",
+  "pricing.growth_cycle": "per maand, jaarlijkse facturering", "pricing.growth_overage": "+ €0,60 / ticket boven 3.000 / maand",
+  "pricing.growth_f1": "Tot 3.000 tickets per maand", "pricing.growth_f2": "AI-concept en conditionele automatische oplossing",
+  "pricing.growth_f3": "1 ITSM-integratie", "pricing.growth_f4": "Vertrouwensgebaseerde routeringsengine",
+  "pricing.growth_f5": "SLA- en prestatiedashboard", "pricing.growth_f6": "E-mail- en prioriteitsondersteuning",
+  "pricing.growth_cta": "Nu starten",
+  "pricing.ent_label": "Enterprise", "pricing.ent_name": "Enterprise Plan",
+  "pricing.ent_pos": "Volledig AI-werkautomatisering voor grote IT-organisaties met geavanceerde compliance- en implementatievereisten.",
+  "pricing.ent_cycle": "per maand, jaarlijkse facturering", "pricing.ent_overage": "+ €0,45 / ticket boven 8.000 / maand",
+  "pricing.ent_f1": "Tot 8.000 tickets per maand", "pricing.ent_f2": "Multidepartementale implementatie",
+  "pricing.ent_f3": "Geavanceerde vertrouwens- en risicogebaseerde routering", "pricing.ent_f4": "Optie voor private implementatie beschikbaar",
+  "pricing.ent_f5": "Beveiligings- en compliancereviewpakket", "pricing.ent_f6": "Dedicated onboarding en implementatie",
+  "pricing.ent_f7": "Prioriteit enterprise-ondersteuning", "pricing.ent_cta": "Contact opnemen",
+  "pricing.addons_label": "Uitbreidingen", "pricing.addons_sub": "Geavanceerde operationele uitbreidingen voor volwassen IT-omgevingen. Beschikbaar bij elk plan.",
+  "pricing.addon1_name": "Auto-Resolve Ontgrendeling", "pricing.addon1_desc": "Zet volledig autonome ticketoplossing in voor hoog-vertrouwen, laagrisico-categorieën — geen menselijke controle per ticket vereist.",
+  "pricing.addon2_name": "HR-Automatiseringsmodule", "pricing.addon2_desc": "Breid AI-werkautomatisering uit naar HR-processen via AFAS- of Visma-integratie — onboarding, offboarding en toegangswijzigingen automatisch afgehandeld.",
+  "pricing.addon3_name": "Privé AI-Modelroutering", "pricing.addon3_desc": "Routeer alle AI-inferentie via uw eigen Azure-omgeving of on-premises infrastructuur. Volledige datapsoevereiniteit zonder externe blootstelling.",
+  "pricing.per_month": "maand",
+  "talent.label": "Opwaardering van het Team", "talent.h2": "Versterk Uw IT-Team.",
+  "talent.p1": "AI-werkautomatisering is geen reductie-strategie. Het is een herverdelingsstrategie. Wanneer First Line AI de repetitieve digitale werkdruk overneemt, kunnen uw engineers zich richten op werk dat daadwerkelijk menselijke expertise vereist.",
+  "talent.p2": "Uw team focust op wat er toe doet:",
+  "talent.li1": "Onderzoek van complexe incidenten en oorzaakanalyse", "talent.li2": "Infrastructuurontwerp en continue verbetering",
+  "talent.li3": "Beveiligingsinitiatieven en risicobeheer", "talent.li4": "Strategische innovatie en digitale transformatie",
+  "talent.li5": "On-site operaties die fysieke aanwezigheid vereisen",
+  "talent.m1l": "Autonoom verwerkte tickets", "talent.m1s": "Per AI-werkeenheid, met vertrouwensgebaseerde routering",
+  "talent.m2l": "Operationele beschikbaarheid", "talent.m2s": "Geen roosterplanning of verlofbeheer vereist",
+  "talent.m3l": "Tijd tot productie", "talent.m3s": "Van pilotgoedkeuring tot operationele live-inzet",
+  "talent.m4l": "Audit en toezicht", "talent.m4v": "Volledige zichtbaarheid gewaarborgd", "talent.m4s": "Elke actie gelogd, gerouteerd en inzichtelijk voor uw team",
+  "trust.label": "Beveiliging & Compliance", "trust.h2": "Enterprise-Infrastructuur. By Design.",
+  "trust.intro": "First Line AI is gebouwd om te opereren binnen enterprise-beveiligingsgrenzen — niet omheen. Elke implementatie voldoet aan de governance-, privacy- en compliancevereisten die grote IT-organisaties stellen.",
+  "trust.c1h": "AVG-naleving", "trust.c1p": "Alle gegevensverwerking vindt plaats binnen conforme grenzen. Persoonsgegevens worden behandeld conform de Europese privacywetgeving met volledige documentatie.",
+  "trust.c2h": "Rolgebaseerde Toegangscontrole", "trust.c2p": "Granulaire toegangscontrole zorgt ervoor dat elk teamlid en elke systeemintegratie binnen gedefinieerde rechtengrenzen opereert.",
+  "trust.c3h": "Versleutelde Gegevensverwerking", "trust.c3p": "Alle gegevens in rust en in transit zijn versleuteld. Ticketinhoud wordt niet bewaard buiten de operationele noodzaak.",
+  "trust.c4h": "Private Implementatieopties", "trust.c4p": "Voor organisaties die data-isolatie vereisen, kan First Line AI worden ingezet in uw eigen Azure-tenant of on-premises infrastructuur.",
+  "trust.c5h": "Auditlogs & Governance", "trust.c5p": "Elke geautomatiseerde actie wordt vastgelegd met een volledig auditspoor — voor interne governance, externe audits en compliancereviews.",
+  "trust.c6h": "Klaar voor Azure & On-Premises", "trust.c6p": "Implementatie is flexibel in cloud-, hybride en on-premises omgevingen — zonder afhankelijkheid van gedeelde infrastructuur van derden.",
+  "cta.label": "Klaar voor implementatie", "cta.h2": "Uw Eerste Linie Moet Intelligente Infrastructuur Zijn.",
+  "cta.sub": "Moderne IT-afdelingen automatiseren wat geen menselijk oordeel vereist. First Line AI geeft uw organisatie de operationele capaciteit om volume op schaal te verwerken — terwijl uw engineers zich richten op het werk dat er werkelijk toe doet.",
+  "cta.cta1": "Executive Strategiegesprek Boeken", "cta.cta2": "60-Daagse Pilot Starten",
+  "cta.note": "Alle pilots bevatten een wederzijdse NDA. Enterprise-prijsstelling beschikbaar voor volumes boven 8.000 tickets per maand.",
+  "footer.privacy": "Privacybeleid", "footer.terms": "Servicevoorwaarden", "footer.security": "Beveiliging", "footer.contact": "Contact",
+  "footer.lang_note": "Beschikbaar in het Engels, Spaans, Frans, Duits en Nederlands.",
+  "footer.copy": "© 2025 First Line AI. Alle rechten voorbehouden."
+}
+
+};
+
+// ─────────────────────────────────────────────
+// LANGUAGE ENGINE
+// ─────────────────────────────────────────────
+const STORAGE_KEY = 'fla_lang';
+const SUPPORTED = ['en','es','fr','de','nl'];
+
+function detectLang() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved && SUPPORTED.includes(saved)) return saved;
+  const browser = (navigator.language || 'en').slice(0,2).toLowerCase();
+  return SUPPORTED.includes(browser) ? browser : 'en';
+}
+
+function setLang(lang, save = true) {
+  if (!SUPPORTED.includes(lang)) lang = 'en';
+  const t = translations[lang];
+  if (!t) return;
+
+  // Fade out
+  document.body.style.opacity = '0.92';
+  document.body.style.transition = 'opacity 0.15s ease';
+
+  setTimeout(() => {
+    // Update all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        el.innerHTML = t[key];
+      }
+    });
+
+    // Meta
+    document.title = t['meta.title'] || document.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && t['meta.description']) metaDesc.setAttribute('content', t['meta.description']);
+
+    // HTML lang attribute
+    document.documentElement.lang = lang;
+
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    // Save preference
+    if (save) localStorage.setItem(STORAGE_KEY, lang);
+
+    // Fade in
+    document.body.style.opacity = '1';
+  }, 120);
+}
+
+// Init on load
+document.addEventListener('DOMContentLoaded', () => {
+  setLang(detectLang(), false);
+});
+</script>
+</body>
+</html>
